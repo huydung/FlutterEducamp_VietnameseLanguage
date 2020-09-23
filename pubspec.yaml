@@ -1,5 +1,6 @@
-name: testing
-description: A new Flutter application.
+name: Vietnamese_and_Flutter_Educamp
+description: An educational app showcasing various Flutter mini-app with the theme of introducing
+  the beautiful Vietnamese language
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
@@ -12,6 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_email_sender: ^3.0.1
+  url_launcher: ^5.7.0
 
 
   cupertino_icons: ^0.1.3
@@ -21,11 +23,17 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
-
-
   uses-material-design: true
   assets:
     - assets/
+  fonts:
+    - family: Fira Sans Extra Condensed
+      fonts:
+        - asset: assets/FiraSansExtraCondensed-Medium.ttf
+    - family: Sources Sans Pro
+      fonts:
+          - asset: assets/SourceSansPro-Regular.ttf
+
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
