@@ -4,63 +4,20 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7aeaa4f-21f5-4306-b795-c34128a9c2df" name="Default Changelist" comment="Finish the Layout Design for Vietnamese Vowel (ep4).">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/debug/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/kotlin/com/huydung/flutter_edu_vietnamese/MainActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable/launch_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/profile/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Flutter/AppFrameworkInfo.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/AppDelegate.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Base.lproj/LaunchScreen.storyboard" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Base.lproj/Main.storyboard" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Info.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Runner-Bridging-Header.h" afterDir="false" />
+    <list default="true" id="f7aeaa4f-21f5-4306-b795-c34128a9c2df" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/assets/audio/a.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/audio/a2.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/audio/a3.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/audio/e.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/audio/e2.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/audio/i.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/audio/o.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/audio/o2.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/audio/o3.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/audio/u.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/audio/u2.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/audio/y.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/vowels.m4a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -126,7 +83,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600854634335</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Finish the Layout Design for Vietnamese Vowel (ep4).">
+      <created>1600923417379</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1600923417379</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -144,39 +108,48 @@
       <screen x="-487" y="-1080" width="1920" height="1050" />
     </state>
     <state x="202" y="-766" key="#com.intellij.ide.util.TreeFileChooserDialog/0.0.1440.930/-487.-1080.1920.1050@-487.-1080.1920.1050" timestamp="1600854360028" />
+    <state x="400" y="124" key="#com.intellij.unscramble.UnscrambleDialog" timestamp="1600936277961">
+      <screen x="0" y="0" width="1440" height="930" />
+    </state>
+    <state x="400" y="124" key="#com.intellij.unscramble.UnscrambleDialog/0.0.1440.930/-314.-1080.1747.1080@0.0.1440.930" timestamp="1600936277961" />
     <state x="328" y="-790" key="AndroidProcessChooserDialog" timestamp="1600854284486">
       <screen x="-487" y="-1080" width="1920" height="1050" />
     </state>
     <state x="328" y="-790" key="AndroidProcessChooserDialog/0.0.1440.930/-487.-1080.1920.1050@-487.-1080.1920.1050" timestamp="1600854284486" />
-    <state x="24" y="0" width="1376" height="930" key="CommitChangelistDialog2" timestamp="1600923366823">
+    <state x="24" y="0" width="1376" height="930" key="CommitChangelistDialog2" timestamp="1600923415958">
       <screen x="0" y="0" width="1440" height="930" />
     </state>
     <state x="99" y="-1080" width="748" height="1050" key="CommitChangelistDialog2/0.0.1440.930/-487.-1080.1920.1050@-487.-1080.1920.1050" timestamp="1600854632904" />
-    <state x="24" y="0" width="1376" height="930" key="CommitChangelistDialog2/0.0.1440.930@0.0.1440.930" timestamp="1600923366823" />
-    <state width="1397" height="285" key="GridCell.Tab.0.bottom" timestamp="1600923366956">
+    <state x="24" y="0" width="1376" height="930" key="CommitChangelistDialog2/0.0.1440.930@0.0.1440.930" timestamp="1600923415958" />
+    <state width="1397" height="285" key="GridCell.Tab.0.bottom" timestamp="1600937076736">
       <screen x="0" y="0" width="1440" height="930" />
     </state>
+    <state width="1397" height="285" key="GridCell.Tab.0.bottom/0.0.1440.930/-314.-1080.1747.1080@0.0.1440.930" timestamp="1600937076736" />
     <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1440.930/-487.-1080.1920.1050@-487.-1080.1920.1050" timestamp="1600854652153" />
     <state width="1397" height="285" key="GridCell.Tab.0.bottom/0.0.1440.930@0.0.1440.930" timestamp="1600923366956" />
-    <state width="1397" height="285" key="GridCell.Tab.0.center" timestamp="1600923366956">
+    <state width="1397" height="285" key="GridCell.Tab.0.center" timestamp="1600937076735">
       <screen x="0" y="0" width="1440" height="930" />
     </state>
+    <state width="1397" height="285" key="GridCell.Tab.0.center/0.0.1440.930/-314.-1080.1747.1080@0.0.1440.930" timestamp="1600937076735" />
     <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1440.930/-487.-1080.1920.1050@-487.-1080.1920.1050" timestamp="1600854652153" />
     <state width="1397" height="285" key="GridCell.Tab.0.center/0.0.1440.930@0.0.1440.930" timestamp="1600923366956" />
-    <state width="1397" height="285" key="GridCell.Tab.0.left" timestamp="1600923366955">
+    <state width="1397" height="285" key="GridCell.Tab.0.left" timestamp="1600937076734">
       <screen x="0" y="0" width="1440" height="930" />
     </state>
+    <state width="1397" height="285" key="GridCell.Tab.0.left/0.0.1440.930/-314.-1080.1747.1080@0.0.1440.930" timestamp="1600937076734" />
     <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1440.930/-487.-1080.1920.1050@-487.-1080.1920.1050" timestamp="1600854652153" />
     <state width="1397" height="285" key="GridCell.Tab.0.left/0.0.1440.930@0.0.1440.930" timestamp="1600923366955" />
-    <state width="1397" height="285" key="GridCell.Tab.0.right" timestamp="1600923366956">
+    <state width="1397" height="285" key="GridCell.Tab.0.right" timestamp="1600937076735">
       <screen x="0" y="0" width="1440" height="930" />
     </state>
+    <state width="1397" height="285" key="GridCell.Tab.0.right/0.0.1440.930/-314.-1080.1747.1080@0.0.1440.930" timestamp="1600937076735" />
     <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1440.930/-487.-1080.1920.1050@-487.-1080.1920.1050" timestamp="1600854652153" />
     <state width="1397" height="285" key="GridCell.Tab.0.right/0.0.1440.930@0.0.1440.930" timestamp="1600923366956" />
-    <state x="65" y="-823" key="Vcs.Push.Dialog.v2" timestamp="1600854637740">
-      <screen x="-487" y="-1080" width="1920" height="1050" />
+    <state x="414" y="228" key="Vcs.Push.Dialog.v2" timestamp="1600923423126">
+      <screen x="0" y="0" width="1440" height="930" />
     </state>
     <state x="65" y="-823" key="Vcs.Push.Dialog.v2/0.0.1440.930/-487.-1080.1920.1050@-487.-1080.1920.1050" timestamp="1600854637740" />
+    <state x="414" y="228" key="Vcs.Push.Dialog.v2/0.0.1440.930@0.0.1440.930" timestamp="1600923423126" />
     <state x="282" y="-639" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600854141610">
       <screen x="-487" y="-1080" width="1920" height="1050" />
     </state>

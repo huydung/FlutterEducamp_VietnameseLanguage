@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audio_cache.dart';
 
 void main() {
   runApp(VowelsApp());
@@ -28,6 +29,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
   List<String> vowels = [
     'a',
     'ă',
@@ -41,6 +43,20 @@ class _MyHomePageState extends State<MyHomePage> {
     'u',
     'ư',
     'y'
+  ];
+  List<String> vowelSounds = [
+    'a.wav',
+    'a2.wav',
+    'a3.wav',
+    'e.wav',
+    'e2.wav',
+    'i.wav',
+    'o.wav',
+    'o2.wav',
+    'o3.wav',
+    'u.wav',
+    'u2.wav',
+    'y.wav'
   ];
   List<Color> colors = [
     Colors.deepOrange[900],
@@ -57,19 +73,28 @@ class _MyHomePageState extends State<MyHomePage> {
     Colors.amber[700],
   ];
 
+  AudioCache _player;
+  void _playVowelSound(int index){
+    //final player = AudioCache(prefix: 'assets/audio/');
+    if( _player != null ){
+      _player.play(vowelSounds[index]);
+    }
+
+  }
   Widget buildLayout() {
+
     const int COLS = 3;
     const int ROWS = 4;
-    int i;
+
     List<Widget> rowWidgets = new List<Widget>();
     for (var r = 0; r < ROWS; r++) {
       List<Widget> cells = [];
       for (var c = 0; c < COLS; c++) {
-        i = r * COLS + c;
-        print('Index: $i');
+        int i = r * COLS + c;
+
         FlatButton button = FlatButton(
             color: colors[i],
-            onPressed: () => {},
+            onPressed: () => {_playVowelSound(i)},
             textColor: Colors.white70,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.zero)),
@@ -100,6 +125,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    if(_player == null){
+      _player =  AudioCache(prefix: 'assets/audio/');
+      print("Created the AudioCache player");
+    }
+    _player.loadAll(vowelSounds);
 /*    List<Widget> buttons = new List<Widget>();
     for (var i = 0; i < vowels.length; i++) {
       buttons.add(buildButton(character: vowels[i], color: colors[i]));
