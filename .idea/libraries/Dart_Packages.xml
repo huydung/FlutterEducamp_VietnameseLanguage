@@ -254,13 +254,6 @@
             </list>
           </value>
         </entry>
-        <entry key="swipedetector">
-          <value>
-            <list>
-              <option value="$PROJECT_DIR$/../../sdks/flutter_mac_1.20.3/.pub-cache/hosted/pub.dartlang.org/swipedetector-1.2.0/lib" />
-            </list>
-          </value>
-        </entry>
         <entry key="term_glyph">
           <value>
             <list>
@@ -387,7 +380,6 @@
       <root url="file://$PROJECT_DIR$/../../sdks/flutter_mac_1.20.3/.pub-cache/hosted/pub.dartlang.org/stack_trace-1.9.5/lib" />
       <root url="file://$PROJECT_DIR$/../../sdks/flutter_mac_1.20.3/.pub-cache/hosted/pub.dartlang.org/stream_channel-2.0.0/lib" />
       <root url="file://$PROJECT_DIR$/../../sdks/flutter_mac_1.20.3/.pub-cache/hosted/pub.dartlang.org/string_scanner-1.0.5/lib" />
-      <root url="file://$PROJECT_DIR$/../../sdks/flutter_mac_1.20.3/.pub-cache/hosted/pub.dartlang.org/swipedetector-1.2.0/lib" />
       <root url="file://$PROJECT_DIR$/../../sdks/flutter_mac_1.20.3/.pub-cache/hosted/pub.dartlang.org/term_glyph-1.1.0/lib" />
       <root url="file://$PROJECT_DIR$/../../sdks/flutter_mac_1.20.3/.pub-cache/hosted/pub.dartlang.org/test_api-0.2.17/lib" />
       <root url="file://$PROJECT_DIR$/../../sdks/flutter_mac_1.20.3/.pub-cache/hosted/pub.dartlang.org/typed_data-1.2.0/lib" />

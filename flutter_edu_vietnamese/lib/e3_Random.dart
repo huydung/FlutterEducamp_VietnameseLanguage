@@ -50,7 +50,7 @@ class _E3_RandomPageState extends State<E3_Random> {
         assetPath: 'assets/bank-notes-20000.jpg',
         bigName: 'HAI MƯƠI',
         explanation:
-            'Commonly known as the Japanese Covered Bridge, this 18th-century landmark can be found in Hoi An, an ancient town in the Central of Vietnam.'),
+        'Commonly known as the Japanese Covered Bridge, this 18th-century landmark can be found in Hoi An, an ancient town in the Central of Vietnam.'),
     BankNoteInfo(
         assetPath: 'assets/bank-notes-50000.jpg',
         bigName: 'NĂM MƯƠI',
@@ -71,12 +71,12 @@ class _E3_RandomPageState extends State<E3_Random> {
         assetPath: 'assets/bank-notes-200000.jpg',
         bigName: 'HAI TRĂM',
         explanation:
-            'Dinh Huong Island at the UNESCO Heritage site of Halong Bay.'),
+        'Dinh Huong Island at the UNESCO Heritage site of Halong Bay.'),
     BankNoteInfo(
         assetPath: 'assets/bank-notes-500000.jpg',
         bigName: 'NĂM TRĂM',
         explanation:
-            'The highest Vietnamese banknote denomination is the birthplace of Ho Chi Minh, the 5-room house at Lotus Village, Nam Dan District, Nghe An Province.'),
+        'The highest Vietnamese banknote denomination is the birthplace of Ho Chi Minh, the 5-room house at Lotus Village, Nam Dan District, Nghe An Province.'),
   ];
 
   void changeBankNote() {
@@ -104,16 +104,22 @@ class _E3_RandomPageState extends State<E3_Random> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            GestureDetector(
-              onDoubleTap: () {
-                changeBankNote();
-                print('Tapped!');
-              },
-              child: Image(
-                image: AssetImage(bankNotes[index].assetPath),
+
+            Image(
+              image: AssetImage(bankNotes[index].assetPath),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 10, 20, 5),
+              child: Text(
+                bankNotes[index].explanation,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey[600],
+                ),
+                textAlign: TextAlign.left,
               ),
             ),
             SizedBox(
@@ -143,23 +149,48 @@ class _E3_RandomPageState extends State<E3_Random> {
                     textAlign: TextAlign.left,
                   ),
                 ]),
+
+
             Divider(
               thickness: 0.5,
               color: Colors.grey[600],
               indent: 20,
               endIndent: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-              child: Text(
-                bankNotes[index].explanation,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey[600],
+            Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: IconButton(
+                      onPressed: () {
+                        swipeBankNote(false);
+                      },
+                      icon: Icon(
+                        Icons.keyboard_arrow_left,
+                      )),
                 ),
-                textAlign: TextAlign.left,
-              ),
-            ),
+                Expanded(
+                  flex: 3,
+                  child: IconButton(
+                      onPressed: () {
+                        changeBankNote();
+                      },
+                      icon: Icon(
+                        Icons.shuffle,
+                      )),
+                ),
+                Expanded(
+                    flex: 1,
+                    child: IconButton(
+                        onPressed: () {
+                          swipeBankNote(true);
+                        },
+                        icon: Icon(
+                          Icons.keyboard_arrow_right,
+                        )),
+                ),
+              ],
+            )
           ],
         ),
       ),
