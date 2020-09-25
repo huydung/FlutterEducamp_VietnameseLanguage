@@ -1,12 +1,15 @@
+import 'dart:io';
+
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audio_cache.dart';
 
 void main() {
-  runApp(VowelsApp());
+  runApp(TonalsApp());
 }
 
-class VowelsApp extends StatelessWidget {
+class TonalsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,63 +31,56 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+//Bug https://github.com/luanpotter/audioplayers/issues/344
+void audioPlayerHandler(AudioPlayerState value) => print('state => '
+    '$value');
 
-  List<String> vowels = [
-    'a',
-    'ă',
-    'â',
-    'e',
-    'ê',
-    'i',
-    'o',
-    'ô',
-    'ơ',
-    'u',
-    'ư',
-    'y'
+
+class _MyHomePageState extends State<MyHomePage> {
+//https://www.youtube.com/watch?v=Jifb6YF5kj8&feature=youtu.be
+//https://www.icanreadvietnamese.com/part-i-principles/02-the-vietnamese-tones#:~:text=The%20five%20symbols%20for%20the,their%20names%20in%20alphabetical%20order.
+  //https://vietnamesetypography.com/history/
+  List<String> _tones = [
+    'ngang', 'i', 'la',
+    'sắc', 'í', 'lá',
+    'huyền', 'ì', 'là',
+    'hỏi', 'ỉ', 'lả',
+    'ngã', 'ĩ', 'lã',
+    'nặng', 'ị', 'lạ',
   ];
-  List<String> vowelSounds = [
-    'a.wav',
-    'a2.wav',
-    'a3.wav',
-    'e.wav',
-    'e2.wav',
-    'i.wav',
-    'o.wav',
-    'o2.wav',
-    'o3.wav',
-    'u.wav',
-    'u2.wav',
-    'y.wav'
+  static List<String> _toneSounds = [
+    'ngang.wav', 'ngang_i.wav','ngang_la.wav',
+    'sac.wav', 'sac_i.wav','sac_la.wav',
+    'huyen.wav', 'huyen_i.wav','huyen_la.wav',
+    'hoi.wav', 'hoi_i.wav','hoi_la.wav',
+    'nga.wav', 'nga_i.wav','nga_la.wav',
+    'nang.wav', 'nang_i.wav','nang_la.wav',
   ];
   List<Color> colors = [
-    Colors.deepOrange[900],
-    Colors.deepOrange[800],
-    Colors.deepOrange[700],
-    Colors.pink[900],
-    Colors.pink[800],
-    Colors.pink[700],
-    Colors.red[900],
-    Colors.red[800],
-    Colors.red[700],
-    Colors.amber[900],
-    Colors.amber[800],
-    Colors.amber[700],
-  ];
+    Colors.deepOrange[800], Colors.deepOrange[600], Colors.deepOrange[700],
+    Colors.purple[800],Colors.purple[600],Colors.purple[700],
+    Colors.red[800],Colors.red[600],Colors.red[700],
+    Colors.indigo[800],Colors.indigo[600],Colors.indigo[700],
+    Colors.pink[800],Colors.pink[600],Colors.pink[700],
+    Colors.deepPurple[800],Colors.deepPurple[600],Colors.deepPurple[700],
 
-  AudioCache _player;
-  void _playVowelSound(int index){
-    //final player = AudioCache(prefix: 'assets/audio/');
-    if( _player != null ){
-      _player.play(vowelSounds[index]);
+  ];
+  static AudioPlayer _player = AudioPlayer();
+  static AudioCache _assetsPlayer = AudioCache(prefix: 'assets/audio/');
+
+  static void _playVowelSound(int index){
+    if( _assetsPlayer != null ){
+      if (Platform.isIOS) {
+        _player.monitorNotificationStateChanges(audioPlayerHandler);
+      }
+      _assetsPlayer.play(_toneSounds[index]);
     }
 
   }
   Widget buildLayout() {
 
     const int COLS = 3;
-    const int ROWS = 4;
+    const int ROWS = 6;
 
     List<Widget> rowWidgets = new List<Widget>();
     for (var r = 0; r < ROWS; r++) {
@@ -99,12 +95,13 @@ class _MyHomePageState extends State<MyHomePage> {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.zero)),
             child: Text(
-              vowels[i].toUpperCase() + ' ' + vowels[i],
+               _tones[i],
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontFamily: 'Fira Sans Extra Condensed',
-                fontSize: 60,
-                //fontWeight: FontWeight.bold,
+                fontFamily: i % 3 == 0 ? 'Source Sans Pro' : 'Fira Sans Extra '
+                    'Condensed',
+                fontSize: i % 3 == 0 ? 30 : 42,
+
               ),
             ));
         cells.add(Expanded(child: button));
@@ -125,30 +122,18 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    if(_player == null){
-      _player =  AudioCache(prefix: 'assets/audio/');
-      print("Created the AudioCache player");
+    if(_assetsPlayer != null){
+      //_assetsPlayer.loadAll(_toneSounds);
+      //print('Pre-loaded all sounds');
     }
-    _player.loadAll(vowelSounds);
-/*    List<Widget> buttons = new List<Widget>();
-    for (var i = 0; i < vowels.length; i++) {
-      buttons.add(buildButton(character: vowels[i], color: colors[i]));
-    }*/
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Vietnamese has ${vowels.length} vowels. Tap to hear.'),
-        backgroundColor: Color(int.parse('0xff53000B')),
+        title: Text('Vietnamese has ${(_tones.length / 3).round()} tones.'),
+        backgroundColor: Colors.grey[900],
       ),
       body: Center(
         child: buildLayout(),
-        /*child: GridView.count(
-            shrinkWrap: true,
-            padding: EdgeInsets.all(10),
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            crossAxisCount: 3,
-            children: buttons
-        ),*/
       ),
     );
   }

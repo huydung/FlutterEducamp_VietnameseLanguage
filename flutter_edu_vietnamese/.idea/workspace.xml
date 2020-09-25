@@ -5,32 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7aeaa4f-21f5-4306-b795-c34128a9c2df" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/audio/a.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/a2.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/a3.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/e.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/e2.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/i.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/o.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/o2.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/o3.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/u.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/u2.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/y.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/vowels.m4a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ep3.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ep4.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ep4.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_3a_XL_API_30" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="UPDATE_TYPE" value="MERGE" />
@@ -53,6 +35,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
