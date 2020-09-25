@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
+import 'consts.dart';
+import 'e1_Image.dart';
+import 'e2_Card.dart';
+import 'e4_Audio.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,92 +14,117 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Vietnamese The Beautiful Language - Flutter EduCamp',
+      title: 'Learn Flutter & explore the Vietnamese language.',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        //primarySwatch: kHDIPrimaryColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        brightness: Brightness.dark,
+        backgroundColor: kHDIBGColor,
+        primaryColor: kHDIPrimaryColor,
+        fontFamily: 'Fira Sans ExtraCondensed',
       ),
-      home: MyHomePage(title: 'Vietnamese The Beautiful Language'),
+      //home: HomePage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => HomePage(),
+        '/${HDIRoutes.E1}': (context) => E1_ImageDisplay(),
+        '/${HDIRoutes.E2}': (context) => E2_Card(),
+        '/${HDIRoutes.E4}': (context) => E4_TonalsPage(),
+      },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-  Future<void> sendEmail() async {
-    final Email email = Email(
-      body: 'A great app about Vietnamese Language and Flutter Development',
-      subject: 'Flutter Development Education + Vietnamese Language Beauty',
-      recipients: ['contact@huydung.com'],
-      // cc: ['cc@example.com'],
-      // bcc: ['bcc@example.com'],
-      // attachmentPaths: ['/path/to/attachment.zip'],
-      isHTML: true,
-    );
-
-    await FlutterEmailSender.send(email);
-  }
-
-  void openTab(){
-    Navigator.pop(context);
-  }
-
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.brown[900],
       appBar: AppBar(
-        title: Text("#1: Simple Scaffolding"),
-        backgroundColor: Colors.red[900],
-      ),
-      drawer: Drawer(
-        child: ListView (
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('Flutter Showcase',
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold)),
-              decoration: BoxDecoration(
-                color: Colors.red[900],
-                image: DecorationImage(image: AssetImage('assets/poster.jpg')),
-              ),
-            ),
-            ListTile(
-              title: Text('Introduction'),
-              onTap: openTab,
-            ),
-            ListTile(
-              title: Text('#1: Simple Scaffolding'),
-              onTap: openTab,
-            )
-          ],
-        )
+        title: Text('Learn Flutter & Vietnamese'),
       ),
       body: Center(
-        child: Image(
-          image: AssetImage('assets/poster.jpg'),
+        child: GridView.count(
+          // crossAxisAlignment: CrossAxisAlignment.stretch,
+          // mainAxisAlignment: MainAxisAlignment.start,
+          padding: EdgeInsets.all(5),
+          shrinkWrap: true,
+          crossAxisCount: 3,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          children: [
+            HDIButton(
+              text: '1. Display an Image',
+              onPressed: () {
+                Navigator.pushNamed(context, '/${HDIRoutes.E1}');
+              },
+            ),
+            HDIButton(
+              text: '2. Laying out Cards',
+              onPressed: () {
+                Navigator.pushNamed(context, '/${HDIRoutes.E2}');
+              },
+            ),
+            HDIButton(
+              text: '3. Random with Math',
+              onPressed: () {
+                Navigator.pushNamed(context, '/${HDIRoutes.E3}');
+              },
+            ),
+            HDIButton(
+              text: '4. Turn on the sound',
+              onPressed: () {
+                Navigator.pushNamed(context, '/${HDIRoutes.E4}');
+              },
+            ),
+            HDIButton(
+              text: '5. Data Structure',
+              onPressed: () {
+                Navigator.pushNamed(context, '/${HDIRoutes.E5}');
+              },
+            ),
+            HDIButton(
+              text: '6. Multi Page and Custom Widgets',
+              onPressed: () {
+                Navigator.pushNamed(context, '/${HDIRoutes.E6}');
+              },
+            ),
+            HDIButton(
+              text: '6. Working with API',
+              onPressed: () {
+                Navigator.pushNamed(context, '/${HDIRoutes.E7}');
+              },
+            ),
+            HDIButton(
+              text: '7. Data on the Cloud!',
+              onPressed: () {
+                Navigator.pushNamed(context, '/${HDIRoutes.E8}');
+              },
+            ),
+            HDIButton(
+              text: '8. Time for To-Do!',
+              onPressed: () {
+                Navigator.pushNamed(context, '/${HDIRoutes.E9}');
+              },
+            ),
+          ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: sendEmail,
-        tooltip: 'Share the app',
-        child: Icon(Icons.email),
-        backgroundColor: Colors.red[900],
-        isExtended: true,
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class HDIButton extends StatelessWidget {
+  final Function onPressed;
+  String text;
+
+  HDIButton({@required this.onPressed, @required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return FlatButton(
+      child: Text(text),
+      color: kHDIBGColor,
+      onPressed: onPressed,
     );
   }
 }
