@@ -2,12 +2,6 @@ import 'consts.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
-//
-// void main() {
-//   runApp(E2_Card());
-// }
-
 class E2_Card extends StatelessWidget {
   static const String urlSpokenStat = 'https://www.ethnologue.com/language/vie';
   static const String urlPopularStat =

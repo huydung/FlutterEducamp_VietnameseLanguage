@@ -1,3 +1,4 @@
+import 'package:Vietnamese_and_Flutter_Educamp/E3_Random.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'consts.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => HomePage(),
         '/${HDIRoutes.E1}': (context) => E1_ImageDisplay(),
         '/${HDIRoutes.E2}': (context) => E2_Card(),
+        '/${HDIRoutes.E3}': (context) => E3_Random(),
         '/${HDIRoutes.E4}': (context) => E4_TonalsPage(),
       },
     );
@@ -78,33 +80,23 @@ class HomePage extends StatelessWidget {
             ),
             HDIButton(
               text: '5. Data Structure',
-              onPressed: () {
-                Navigator.pushNamed(context, '/${HDIRoutes.E5}');
-              },
+              onPressed: null,
             ),
             HDIButton(
               text: '6. Multi Page and Custom Widgets',
-              onPressed: () {
-                Navigator.pushNamed(context, '/${HDIRoutes.E6}');
-              },
+              onPressed: null,
             ),
             HDIButton(
-              text: '6. Working with API',
-              onPressed: () {
-                Navigator.pushNamed(context, '/${HDIRoutes.E7}');
-              },
+              text: '7. Working with API',
+              onPressed: null,
             ),
             HDIButton(
-              text: '7. Data on the Cloud!',
-              onPressed: () {
-                Navigator.pushNamed(context, '/${HDIRoutes.E8}');
-              },
+              text: '8. Data on the Cloud!',
+              onPressed: null,
             ),
             HDIButton(
-              text: '8. Time for To-Do!',
-              onPressed: () {
-                Navigator.pushNamed(context, '/${HDIRoutes.E9}');
-              },
+              text: '9. Time for To-Do!',
+              onPressed: null,
             ),
           ],
         ),

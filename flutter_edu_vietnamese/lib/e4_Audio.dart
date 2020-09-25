@@ -116,7 +116,8 @@ class _E4_TonalsPageState extends State<E4_TonalsPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Vietnamese has ${(_tones.length / 3).round()} tones.'),
+        title: Text('4. The ${(_tones.length / 3).round()} tones in '
+            'Vietnamese'),
       ),
       body: Center(
         child: buildLayout(),

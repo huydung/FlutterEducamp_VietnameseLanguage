@@ -1,98 +1,168 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'consts.dart';
+import 'dart:math';
 
-void main() {
-  runApp(E3_Random());
+//https://www.itourvn.com/blog/the-meanings-behind-vietnamese-banknotes
+
+class BankNoteInfo {
+  String assetPath;
+  String explanation;
+  String bigName;
+
+  BankNoteInfo({this.assetPath, this.explanation, this.bigName});
 }
 
-class E3_Random extends StatelessWidget {
-  static const String urlSpokenStat = 'https://www.ethnologue.com/language/vie';
-  static const String urlPopularStat = 'https://www.visualcapitalist.com/100-most-spoken-languages/';
-  static const String urlDifficultyStat = 'https://www.mustgo.com/worldlanguages/vietnamese/';
+class E3_Random extends StatefulWidget {
+  @override
+  _E3_RandomPageState createState() => _E3_RandomPageState();
+}
 
-  _launchURL(String url) async {
-    //const url = 'https://flutter.dev';
-    if (await canLaunch(url) != null) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
+class _E3_RandomPageState extends State<E3_Random> {
+  int index = 0;
+  List<BankNoteInfo> bankNotes = [
+    BankNoteInfo(
+        assetPath: 'assets/bank-notes-1000.jpg',
+        bigName: 'MỘT',
+        explanation: 'Image of locals using elephants for logging in Tay '
+            'Nguyen Province.'),
+    BankNoteInfo(
+        assetPath: 'assets/bank-notes-2000.jpg',
+        bigName: 'HAI',
+        explanation: 'Female textile factory workers in  '
+            ' the largest textile factory of Indochina'
+            ' during the French colonization period at Nam Dinh Province, '
+            'Northern Vietnam.'),
+    BankNoteInfo(
+        assetPath: 'assets/bank-notes-5000.jpg',
+        bigName: 'NĂM',
+        explanation: 'Image of Tri An Hydroelectric Power Plant which '
+            'located in Dong Nai Province Province - A recognition of the '
+            'Soviet Union\'s support to build this plant.'),
+    BankNoteInfo(
+        assetPath: 'assets/bank-notes-10000.jpg',
+        bigName: 'MƯỜI',
+        explanation: 'Printed on the VND 10,000 banknote is the White Tiger'
+            ' Oil Field, which is a major oil field and has been in '
+            'operation since 1975.'
+            '.'),
+    BankNoteInfo(
+        assetPath: 'assets/bank-notes-20000.jpg',
+        bigName: 'HAI MƯƠI',
+        explanation:
+            'Commonly known as the Japanese Covered Bridge, this 18th-century landmark can be found in Hoi An, an ancient town in the Central of Vietnam.'),
+    BankNoteInfo(
+        assetPath: 'assets/bank-notes-50000.jpg',
+        bigName: 'NĂM MƯƠI',
+        explanation: 'Two historic sites in Hue: '
+            'Nghenh Luong Dinh - the resting'
+            ' place of the Nguyen King before the dragon boat cruising on '
+            'the Perfume River, and Phu Van Lau where '
+            '- in the past - the locals could read announcements from the '
+            'government.'),
+    BankNoteInfo(
+        assetPath: 'assets/bank-notes-100000.jpg',
+        bigName: 'MỘT TRĂM',
+        explanation: 'Van Mieu - Quoc Tu Giam, or the Temple of Literature,'
+            ' is considered as the'
+            ' first university of Vietnam. It is one of the iconic sites of'
+            ' Hanoi, the capital of Vietnam.'),
+    BankNoteInfo(
+        assetPath: 'assets/bank-notes-200000.jpg',
+        bigName: 'HAI TRĂM',
+        explanation:
+            'Dinh Huong Island at the UNESCO Heritage site of Halong Bay.'),
+    BankNoteInfo(
+        assetPath: 'assets/bank-notes-500000.jpg',
+        bigName: 'NĂM TRĂM',
+        explanation:
+            'The highest Vietnamese banknote denomination is the birthplace of Ho Chi Minh, the 5-room house at Lotus Village, Nam Dan District, Nghe An Province.'),
+  ];
+
+  void changeBankNote() {
+    setState(() {
+      index = Random().nextInt(bankNotes.length);
+    });
   }
+
+  void swipeBankNote(bool foward) {
+    setState(() {
+      if (foward) {
+        index = index < bankNotes.length - 1 ? index + 1 : 0;
+      } else {
+        index = index > 0 ? index - 1 : bankNotes.length - 1;
+      }
+    });
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        theme: ThemeData(
-            fontFamily: 'Sources Sans Pro', brightness: Brightness.dark),
-        home: Scaffold(
-          appBar: AppBar(
-            backgroundColor: kHDIPrimaryColor,
-            title: Text('2. Vietnamese Facts'),
-          ),
-          backgroundColor: Colors.blueGrey[900],
-          body: SafeArea(
-              child: Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 50,
-                      backgroundImage: AssetImage('assets/vietnamflag.png'),
-                    ),
-                    Text(
-                      'Vietnamese Language',
-                      style: TextStyle(
-                          fontFamily: 'Fira Sans Extra Condensed',
-                          color: Colors.white,
-                          fontSize: 28),
-                    ),
-                    Divider(
-                      color: Colors.blueGrey[200],
-                      indent: 70,
-                      endIndent: 70,
-                      thickness: 0.2,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Card(
-                      color: kHDIBGColor,
-                      margin: EdgeInsets.symmetric(vertical: 3, horizontal: 40),
-                      child: ListTile(
-                        onTap: () => _launchURL(urlSpokenStat),
-                        leading: Icon(Icons.people),
-                        title: Text(
-                          'Spoken by 77 million people',
-                        ),
-                      ),
-                    ),
-                    Card(
-                      color: kHDIBGColor,
-                      margin: EdgeInsets.symmetric(vertical: 3, horizontal: 40),
-                      child: ListTile(
-                        onTap: () => _launchURL(urlPopularStat),
-                        leading: Icon(Icons.equalizer),
-                        title: Text(
-                          '#22 Most Popular Language',
-                        ),
-                      ),
-                    ),
-                    Card(
-                      color: kHDIBGColor,
-                      margin: EdgeInsets.symmetric(vertical: 3, horizontal: 40),
-                      child: ListTile(
-                        onTap: () => _launchURL(urlDifficultyStat),
-                        leading: Icon(Icons.gesture),
-                        title: Text(
-                          'Difficulty Level: Rather Hard',
-                        ),
-                      ),
-                    ),
-                  ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('3. Double Tap the Bank Notes'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            GestureDetector(
+              onDoubleTap: () {
+                changeBankNote();
+                print('Tapped!');
+              },
+              child: Image(
+                image: AssetImage(bankNotes[index].assetPath),
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Row(mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    bankNotes[index].bigName,
+                    style: TextStyle(
+                        fontSize: 60,
+                        fontFamily: 'Fira Sans '
+                            'Extra Condensed'),
+                    textAlign: TextAlign.left,
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    'nghìn\nđồng',
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.grey[400],
+                        fontFamily: 'Fira Sans '
+                            'Extra Condensed'),
+                    textAlign: TextAlign.left,
+                  ),
+                ]),
+            Divider(
+              thickness: 0.5,
+              color: Colors.grey[600],
+              indent: 20,
+              endIndent: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+              child: Text(
+                bankNotes[index].explanation,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey[600],
                 ),
-              )),
-        ));
+                textAlign: TextAlign.left,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
