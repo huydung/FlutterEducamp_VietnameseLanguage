@@ -20,6 +20,9 @@ class E3_Random extends StatefulWidget {
 
 class _E3_RandomPageState extends State<E3_Random> {
   int index = 0;
+  bool _showNote = false;
+
+
   List<BankNoteInfo> bankNotes = [
     BankNoteInfo(
         assetPath: 'assets/bank-notes-1000.jpg',
@@ -50,7 +53,7 @@ class _E3_RandomPageState extends State<E3_Random> {
         assetPath: 'assets/bank-notes-20000.jpg',
         bigName: 'HAI MƯƠI',
         explanation:
-        'Commonly known as the Japanese Covered Bridge, this 18th-century landmark can be found in Hoi An, an ancient town in the Central of Vietnam.'),
+            'Commonly known as the Japanese Covered Bridge, this 18th-century landmark can be found in Hoi An, an ancient town in the Central of Vietnam.'),
     BankNoteInfo(
         assetPath: 'assets/bank-notes-50000.jpg',
         bigName: 'NĂM MƯƠI',
@@ -71,12 +74,12 @@ class _E3_RandomPageState extends State<E3_Random> {
         assetPath: 'assets/bank-notes-200000.jpg',
         bigName: 'HAI TRĂM',
         explanation:
-        'Dinh Huong Island at the UNESCO Heritage site of Halong Bay.'),
+            'Dinh Huong Island at the UNESCO Heritage site of Halong Bay.'),
     BankNoteInfo(
         assetPath: 'assets/bank-notes-500000.jpg',
         bigName: 'NĂM TRĂM',
         explanation:
-        'The highest Vietnamese banknote denomination is the birthplace of Ho Chi Minh, the 5-room house at Lotus Village, Nam Dan District, Nghe An Province.'),
+            'The highest Vietnamese banknote denomination is the birthplace of Ho Chi Minh, the 5-room house at Lotus Village, Nam Dan District, Nghe An Province.'),
   ];
 
   void changeBankNote() {
@@ -100,64 +103,88 @@ class _E3_RandomPageState extends State<E3_Random> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('3. Double Tap the Bank Notes'),
+        title: Text('3. Vietnamese Bank Notes'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            flex: 7,
 
-            Image(
-              image: AssetImage(bankNotes[index].assetPath),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 10, 20, 5),
-              child: Text(
-                bankNotes[index].explanation,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey[600],
+            child: ListView(
+              padding: EdgeInsets.only(top: kSmallMargin),
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 0,
+                      horizontal: kStandardMargin),
+                  child: GestureDetector(
+                    onTap: (){
+                      setState(() {
+                        this._showNote = !this._showNote;
+                      });
+                    },
+                    child: Image(
+                      image: AssetImage(bankNotes[index].assetPath),
+                    ),
+                  ),
                 ),
-                textAlign: TextAlign.left,
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Row(mainAxisAlignment: MainAxisAlignment.center,
-                //crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Text(
-                    bankNotes[index].bigName,
-                    style: TextStyle(
-                        fontSize: 60,
-                        fontFamily: 'Fira Sans '
-                            'Extra Condensed'),
-                    textAlign: TextAlign.left,
+                SizedBox(
+                  height: 15,
+                ),
+                Row(mainAxisAlignment: MainAxisAlignment.center,
+                    //crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(
+                        bankNotes[index].bigName,
+                        style: TextStyle(
+                            fontSize: kKeyPointFontSize,
+                            fontFamily: 'Fira Sans '
+                                'Extra Condensed'),
+                        textAlign: TextAlign.left,
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        'nghìn\nđồng',
+                        style: TextStyle(
+                            fontSize: kSubtitleFontSize,
+                            color: Colors.grey[400],
+                            fontFamily: 'Fira Sans '
+                                'Extra Condensed'),
+                        textAlign: TextAlign.left,
+                      ),
+                    ]),
+                Visibility(
+                  visible: _showNote,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(kStandardMargin, kSmallMargin,
+                        kStandardMargin, kSmallMargin),
+                    child: Text(
+                      bankNotes[index].explanation,
+                      style: TextStyle(
+                        fontSize: kDetailFontSize,
+                        color: Colors.grey[600],
+                      ),
+                      textAlign: TextAlign.left,
+                    ),
                   ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Text(
-                    'nghìn\nđồng',
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.grey[400],
-                        fontFamily: 'Fira Sans '
-                            'Extra Condensed'),
-                    textAlign: TextAlign.left,
-                  ),
-                ]),
+                ),
 
-
-            Divider(
-              thickness: 0.5,
-              color: Colors.grey[600],
-              indent: 20,
-              endIndent: 20,
+              ],
             ),
-            Row(
+          ),
+          Divider(
+            thickness: 0.5,
+            color: Colors.grey[600],
+            indent: kStandardMargin,
+            endIndent: kStandardMargin,
+          ),
+          Expanded(
+            flex: 1,
+            child: Row(
               children: [
                 Expanded(
                   flex: 1,
@@ -180,20 +207,20 @@ class _E3_RandomPageState extends State<E3_Random> {
                       )),
                 ),
                 Expanded(
-                    flex: 1,
-                    child: IconButton(
-                        onPressed: () {
-                          swipeBankNote(true);
-                        },
-                        icon: Icon(
-                          Icons.keyboard_arrow_right,
-                        )),
+                  flex: 1,
+                  child: IconButton(
+                      onPressed: () {
+                        swipeBankNote(true);
+                      },
+                      icon: Icon(
+                        Icons.keyboard_arrow_right,
+                      )),
                 ),
               ],
-            )
-          ],
-        ),
-      ),
+            ),
+          ),
+        ],
+      )),
     );
   }
 }
