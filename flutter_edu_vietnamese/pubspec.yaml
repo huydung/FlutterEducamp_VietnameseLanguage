@@ -28,6 +28,7 @@ flutter:
   assets:
     - assets/
     - assets/audio/
+    - assets/quiz_images/
   fonts:
     - family: Fira Sans Extra Condensed
       fonts:

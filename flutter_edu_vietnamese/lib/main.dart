@@ -1,10 +1,12 @@
 import 'package:Vietnamese_and_Flutter_Educamp/E3_Random.dart';
+import 'package:Vietnamese_and_Flutter_Educamp/e5_Quizz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'consts.dart';
 import 'e1_Image.dart';
 import 'e2_Card.dart';
 import 'e4_Audio.dart';
+import 'e5_Quizz.dart';
 
 void main() {
   runApp(MyApp());
@@ -32,6 +34,7 @@ class MyApp extends StatelessWidget {
         '/${HDIRoutes.E2}': (context) => E2_Card(),
         '/${HDIRoutes.E3}': (context) => E3_Random(),
         '/${HDIRoutes.E4}': (context) => E4_TonalsPage(),
+        '/${HDIRoutes.E5}': (context) => E5_QuizPage(),
       },
     );
   }
@@ -80,7 +83,9 @@ class HomePage extends StatelessWidget {
             ),
             HDIButton(
               text: '5. Data Structure',
-              onPressed: null,
+              onPressed: () {
+                Navigator.pushNamed(context, '/${HDIRoutes.E5}');
+              },
             ),
             HDIButton(
               text: '6. Multi Page and Custom Widgets',
