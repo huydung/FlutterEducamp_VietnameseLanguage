@@ -1,7 +1,7 @@
 import 'package:Vietnamese_and_Flutter_Educamp/E3_Random.dart';
 import 'package:Vietnamese_and_Flutter_Educamp/e5_Quizz.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_email_sender/flutter_email_sender.dart';
+
 import 'consts.dart';
 import 'e1_Image.dart';
 import 'e2_Card.dart';
@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         brightness: Brightness.dark,
         backgroundColor: kHDIBGColor,
+        canvasColor: Colors.blueGrey[900],
         primaryColor: kHDIPrimaryColor,
         fontFamily: 'Fira Sans ExtraCondensed',
       ),

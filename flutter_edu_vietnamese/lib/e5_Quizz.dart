@@ -1,11 +1,7 @@
-import 'dart:io';
-
 import 'package:Vietnamese_and_Flutter_Educamp/consts.dart';
 import 'package:Vietnamese_and_Flutter_Educamp/question_data_management.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audio_cache.dart';
 
 // void main() {
 //   runApp(E4_TonalsApp());
@@ -22,33 +18,72 @@ class E5_QuizPage extends StatefulWidget {
 class _E5_QuizPageState extends State<E5_QuizPage> {
   Question _currentQuestion;
   QuestionBank _questionBank;
-  List<QuestionFeedback> _feedbacks;
+
+  void _checkAnswerAndProceed(String answer) {
+    setState(() {
+      _questionBank.submitAnswer(answer);
+      if (_questionBank.goToNextQuestion()) {
+        _currentQuestion = _questionBank.getActiveQuestion();
+      } else {
+        showResultDialog();
+      }
+    });
+  }
+
+  Future<void> showResultDialog() async {
+    return showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Quiz Result'),
+            content: ListTile(
+              leading: Icon(Icons.info),
+              title: Text(
+                  'You scored ${_questionBank.getScore()}/${_questionBank.questions.length}'),
+            ),
+            actions: [
+              FlatButton(
+                child: Text('OK, Quit'),
+                onPressed: () {
+                  Navigator.of(context).popUntil(ModalRoute.withName('/'));
+                },
+              ),
+              FlatButton(
+                child: Text('Try Again'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  setState(() {
+                    _questionBank.restart();
+                    _currentQuestion = _questionBank.getActiveQuestion();
+                  });
+                },
+              )
+            ],
+          );
+        });
+  }
 
   @override
   void initState() {
     super.initState();
     _questionBank = new QuestionBank();
     _currentQuestion = _questionBank.getActiveQuestion();
-    _feedbacks = _questionBank.feedbacks;
     print(_currentQuestion.questionText);
   }
 
   List<Widget> buildAnswerButtons() {
     List<Widget> buttons = List();
     _currentQuestion.options.forEach((element) {
-      buttons.add(Padding(
-        padding: const EdgeInsets.symmetric(
-            vertical: 0, horizontal: kSmallMargin),
-        child: FlatButton(
-          child: Text(
-            element,
-            style: TextStyle(color: Colors.white),
-          ),
-          color: kHDIBGColor,
-          padding: EdgeInsets.symmetric(
-              vertical: kSmallMargin, horizontal: 2 * kStandardMargin),
-          onPressed: () {},
+      buttons.add(RaisedButton(
+        child: Text(
+          element,
+          style: TextStyle(color: Colors.white),
         ),
+        color: kHDIBGColor,
+        onPressed: () {
+          _checkAnswerAndProceed(element);
+        },
       ));
     });
     return buttons;
@@ -56,26 +91,30 @@ class _E5_QuizPageState extends State<E5_QuizPage> {
 
   List<Widget> buildFeedbackButtons() {
     List<Widget> icons = List();
-    _questionBank.feedbacks.forEach((element) {
-      Icon icon;
-      switch (element.state) {
-        case QuestionFeedbackState.UNANSWERD:
-          icon = Icon(
-            Icons.check_box_outline_blank,
-            color: Colors.grey[800],
-            size: kStandardMargin,
+    _questionBank.questions.forEach((element) {
+      Widget icon;
+      switch (element.feedback) {
+        case QuestionFeedback.UNANSWERD:
+          icon = Padding(
+            padding: const EdgeInsets.only(
+                right: kSmallMargin * 0.5, left: kSmallMargin * 0.5),
+            child: Icon(
+              Icons.fiber_manual_record,
+              color: Colors.grey[800],
+              size: kSmallMargin,
+            ),
           );
           break;
-        case QuestionFeedbackState.CORRECT:
+        case QuestionFeedback.CORRECT:
           icon = Icon(
-            Icons.check_box,
+            Icons.check_circle_outline,
             color: Colors.green,
             size: kStandardMargin,
           );
           break;
-        case QuestionFeedbackState.WRONG:
+        case QuestionFeedback.WRONG:
           icon = Icon(
-            Icons.indeterminate_check_box,
+            Icons.remove_circle_outline,
             color: Colors.red,
             size: kStandardMargin,
           );
@@ -99,7 +138,7 @@ class _E5_QuizPageState extends State<E5_QuizPage> {
           padding: const EdgeInsets.symmetric(
               vertical: kSmallMargin, horizontal: kStandardMargin),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Expanded(
@@ -109,11 +148,10 @@ class _E5_QuizPageState extends State<E5_QuizPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                 ),
               ),
-              SizedBox(height: kStandardMargin,),
               Expanded(
                 flex: 8,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     ListView(
                       shrinkWrap: true,
@@ -136,14 +174,16 @@ class _E5_QuizPageState extends State<E5_QuizPage> {
                 ),
               ),
               Expanded(
-                flex: 2,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: buildAnswerButtons(),
-                ),
-              ),
-
+                  flex: 2,
+                  child: GridView.count(
+                    children: buildAnswerButtons(),
+                    crossAxisCount: 2,
+                    childAspectRatio: 4.0,
+                    shrinkWrap: true,
+                    crossAxisSpacing: kSmallMargin,
+                    mainAxisSpacing: kSmallMargin,
+                    reverse: true,
+                  )),
             ],
           ),
         ),
