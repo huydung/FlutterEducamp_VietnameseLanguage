@@ -28,14 +28,14 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Fira Sans ExtraCondensed',
       ),
       //home: HomePage(),
-      initialRoute: '/',
+      initialRoute: kRoutes.HOME,
       routes: {
-        '/': (context) => HomePage(),
-        '/${HDIRoutes.E1}': (context) => E1_ImageDisplay(),
-        '/${HDIRoutes.E2}': (context) => E2_Card(),
-        '/${HDIRoutes.E3}': (context) => E3_Random(),
-        '/${HDIRoutes.E4}': (context) => E4_TonalsPage(),
-        '/${HDIRoutes.E5}': (context) => E5_QuizPage(),
+        kRoutes.HOME: (context) => HomePage(),
+        kRoutes.E1_IMAGE: (context) => E1_ImageDisplay(),
+        kRoutes.E2_BIZ_CARD: (context) => E2_Card(),
+        kRoutes.E3_RANDOM_BANK_NOTE: (context) => E3_Random(),
+        kRoutes.E4_SOUNDPAD: (context) => E4_TonalsPage(),
+        kRoutes.E5_QUIZ: (context) => E5_QuizPage(),
       },
     );
   }
@@ -61,31 +61,31 @@ class HomePage extends StatelessWidget {
             HDIButton(
               text: '1. Display an Image',
               onPressed: () {
-                Navigator.pushNamed(context, '/${HDIRoutes.E1}');
+                Navigator.pushNamed(context, kRoutes.E1_IMAGE);
               },
             ),
             HDIButton(
               text: '2. Laying out Cards',
               onPressed: () {
-                Navigator.pushNamed(context, '/${HDIRoutes.E2}');
+                Navigator.pushNamed(context, kRoutes.E2_BIZ_CARD);
               },
             ),
             HDIButton(
               text: '3. Random with Math',
               onPressed: () {
-                Navigator.pushNamed(context, '/${HDIRoutes.E3}');
+                Navigator.pushNamed(context, kRoutes.E3_RANDOM_BANK_NOTE);
               },
             ),
             HDIButton(
               text: '4. Turn on the sound',
               onPressed: () {
-                Navigator.pushNamed(context, '/${HDIRoutes.E4}');
+                Navigator.pushNamed(context, kRoutes.E4_SOUNDPAD);
               },
             ),
             HDIButton(
               text: '5. Data Structure',
               onPressed: () {
-                Navigator.pushNamed(context, '/${HDIRoutes.E5}');
+                Navigator.pushNamed(context, kRoutes.E5_QUIZ);
               },
             ),
             HDIButton(

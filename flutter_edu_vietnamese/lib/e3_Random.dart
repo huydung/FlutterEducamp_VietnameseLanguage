@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'consts.dart';
 import 'dart:math';
+
+import 'package:flutter/material.dart';
+
+import 'consts.dart';
 
 //https://www.itourvn.com/blog/the-meanings-behind-vietnamese-banknotes
 
@@ -20,8 +21,7 @@ class E3_Random extends StatefulWidget {
 
 class _E3_RandomPageState extends State<E3_Random> {
   int index = 0;
-  bool _showNote = false;
-
+  bool _showNote = true;
 
   List<BankNoteInfo> bankNotes = [
     BankNoteInfo(
@@ -112,15 +112,14 @@ class _E3_RandomPageState extends State<E3_Random> {
         children: [
           Expanded(
             flex: 7,
-
             child: ListView(
               padding: EdgeInsets.only(top: kSmallMargin),
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 0,
-                      horizontal: kStandardMargin),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 0, horizontal: kStandardMargin),
                   child: GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       setState(() {
                         this._showNote = !this._showNote;
                       });
@@ -160,8 +159,8 @@ class _E3_RandomPageState extends State<E3_Random> {
                 Visibility(
                   visible: _showNote,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(kStandardMargin, kSmallMargin,
-                        kStandardMargin, kSmallMargin),
+                    padding: const EdgeInsets.fromLTRB(kStandardMargin,
+                        kSmallMargin, kStandardMargin, kSmallMargin),
                     child: Text(
                       bankNotes[index].explanation,
                       style: TextStyle(
@@ -172,7 +171,6 @@ class _E3_RandomPageState extends State<E3_Random> {
                     ),
                   ),
                 ),
-
               ],
             ),
           ),

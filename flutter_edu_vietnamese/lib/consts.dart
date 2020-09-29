@@ -7,6 +7,14 @@ const double kSmallMargin = 10.0;
 const double kDetailFontSize = 16;
 const double kKeyPointFontSize = 60;
 const double kSubtitleFontSize = 20;
-enum HDIRoutes {
-  E1, E2, E3, E4, E5, E6, E7, E8, E9
+
+class kRoutes {
+  static const String HOME = '/';
+  static const String E1_IMAGE = '/e1';
+  static const String E2_BIZ_CARD = '/e2';
+  static const String E3_RANDOM_BANK_NOTE = '/e3';
+  static const String E4_SOUNDPAD = '/e4';
+  static const String E5_QUIZ = '/e5';
+  static const String E6_SALARY_CALCULATOR = '/e6';
+  static const String E7_API_WORK = '/e7';
 }

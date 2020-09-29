@@ -40,13 +40,14 @@ class _E5_QuizPageState extends State<E5_QuizPage> {
             content: ListTile(
               leading: Icon(Icons.info),
               title: Text(
-                  'You scored ${_questionBank.getScore()}/${_questionBank.questions.length}'),
+                  'You scored ${_questionBank.getScore()}/${_questionBank.feedbacks.length}'),
             ),
             actions: [
               FlatButton(
                 child: Text('OK, Quit'),
                 onPressed: () {
-                  Navigator.of(context).popUntil(ModalRoute.withName('/'));
+                  Navigator.of(context)
+                      .popUntil(ModalRoute.withName(kRoutes.HOME));
                 },
               ),
               FlatButton(
@@ -91,9 +92,9 @@ class _E5_QuizPageState extends State<E5_QuizPage> {
 
   List<Widget> buildFeedbackButtons() {
     List<Widget> icons = List();
-    _questionBank.questions.forEach((element) {
+    _questionBank.feedbacks.forEach((element) {
       Widget icon;
-      switch (element.feedback) {
+      switch (element) {
         case QuestionFeedback.UNANSWERD:
           icon = Padding(
             padding: const EdgeInsets.only(

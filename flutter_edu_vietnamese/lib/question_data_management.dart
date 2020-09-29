@@ -9,6 +9,11 @@ class Question {
   String _chosenAnswer;
 
   String get questionText => _questionText;
+  List<String> get options => _options;
+  String get correctOption => _correctOption;
+  String get assetImagePath => _assetImagePath;
+  QuestionFeedback get feedback => _feedback;
+  String get chosenAnswer => _chosenAnswer;
 
   Question(
       {@required String questionText,
@@ -29,12 +34,6 @@ class Question {
       _feedback = QuestionFeedback.WRONG;
     }
   }
-
-  List<String> get options => _options;
-  String get correctOption => _correctOption;
-  String get assetImagePath => _assetImagePath;
-  QuestionFeedback get feedback => _feedback;
-  String get chosenAnswer => _chosenAnswer;
 }
 
 enum QuestionFeedback {
@@ -47,7 +46,8 @@ enum QuestionFeedback {
 class QuestionBank {
   int _index = 0;
   List<Question> _questions;
-  List<Question> get questions => _questions;
+  List<QuestionFeedback> _feedbacks = List();
+  List<QuestionFeedback> get feedbacks => _feedbacks;
 
   bool goToNextQuestion() {
     if (_index < _questions.length - 1) {
@@ -63,7 +63,6 @@ class QuestionBank {
       if (element.feedback == QuestionFeedback.CORRECT) {
         score++;
       }
-      ;
     });
     return score;
   }
@@ -81,6 +80,7 @@ class QuestionBank {
   void submitAnswer(String answer) {
     Question q = getActiveQuestion();
     q.submitAnswer(answer);
+    _feedbacks[_index] = q.feedback;
   }
 
   bool isFinished() {
@@ -127,7 +127,7 @@ class QuestionBank {
           assetImagePath: 'quiz_images/nemran.jpg'),
       Question(
           questionText: 'What is the name of this dish?',
-          options: ['Bún Bò Huế', 'Bún Cá', 'Phở', 'Bún Bò'],
+          options: ['Bún Bò Huế', 'Bún Cá', 'Phở', 'Mì Quảng'],
           correctOption: 'Bún Bò Huế',
           assetImagePath: 'quiz_images/bunbohue.jpg'),
       Question(
@@ -147,8 +147,10 @@ class QuestionBank {
 
   void restart() {
     _questions.shuffle();
+    _feedbacks.clear();
     _questions.forEach((element) {
       element.submitAnswer(null);
+      _feedbacks.add(element.feedback);
     });
     _index = 0;
   }
