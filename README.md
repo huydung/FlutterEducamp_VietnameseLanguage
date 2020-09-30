@@ -12,8 +12,7 @@ from Angela along the way to aid the learning journey. Not to mention that the t
 However, as the course targets absolute beginner, it spends time to go through the utmost basic
 programming concepts like Variables, Loops, Conditionals, Object-Oriented Programming, etc, plus the
  challenges are designed in a progression so the first ones are really basic. **As a result, for
- experiences programmers coming from other  programming languagues the pace is quite slow**. I think
-  it will be more effective for them to have
+ experiences programmers coming from other  programming languagues the pace is quite slow**. I thinkt will be more effective for them to have
  some sign posts and tips based on the course excellent curriculum but then they can dive directly
  into the
  challenges (armed with Flutter documentation) instead of watching the full course.
@@ -50,4 +49,3 @@ All the mini-apps shared the theme of exploring Vietnamese Language and Vietname
     1. Layouts with rows and columns
     2. Custom Fonts
     3. Cards
-
