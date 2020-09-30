@@ -8,6 +8,8 @@ import 'e2_Card.dart';
 import 'e4_Audio.dart';
 import 'e5_Quizz.dart';
 
+//https://exchangeratesapi.io/
+
 void main() {
   runApp(MyApp());
 }
@@ -59,38 +61,40 @@ class HomePage extends StatelessWidget {
           mainAxisSpacing: 10,
           children: [
             HDIButton(
-              text: '1. Display an Image',
+              text: 'Hello there!',
               onPressed: () {
                 Navigator.pushNamed(context, kRoutes.E1_IMAGE);
               },
             ),
             HDIButton(
-              text: '2. Laying out Cards',
+              text: 'Vietnam Facts',
               onPressed: () {
                 Navigator.pushNamed(context, kRoutes.E2_BIZ_CARD);
               },
             ),
             HDIButton(
-              text: '3. Random with Math',
+              text: 'Vietnamese Bank Notes',
               onPressed: () {
                 Navigator.pushNamed(context, kRoutes.E3_RANDOM_BANK_NOTE);
               },
             ),
             HDIButton(
-              text: '4. Turn on the sound',
+              text: '6 tones in Vietnamese',
               onPressed: () {
                 Navigator.pushNamed(context, kRoutes.E4_SOUNDPAD);
               },
             ),
             HDIButton(
-              text: '5. Data Structure',
+              text: 'Vietnamese Dishes',
               onPressed: () {
                 Navigator.pushNamed(context, kRoutes.E5_QUIZ);
               },
             ),
             HDIButton(
-              text: '6. Multi Page and Custom Widgets',
-              onPressed: null,
+              text: 'Matching Couple?',
+              onPressed: () {
+                Navigator.pushNamed(context, kRoutes.E6_COUPLE_MATCH);
+              },
             ),
             HDIButton(
               text: '7. Working with API',

@@ -15,6 +15,6 @@ class kRoutes {
   static const String E3_RANDOM_BANK_NOTE = '/e3';
   static const String E4_SOUNDPAD = '/e4';
   static const String E5_QUIZ = '/e5';
-  static const String E6_SALARY_CALCULATOR = '/e6';
+  static const String E6_COUPLE_MATCH = '/e6';
   static const String E7_API_WORK = '/e7';
 }
