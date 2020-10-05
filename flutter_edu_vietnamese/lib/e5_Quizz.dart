@@ -1,5 +1,5 @@
 import 'package:Vietnamese_and_Flutter_Educamp/consts.dart';
-import 'package:Vietnamese_and_Flutter_Educamp/question_data_management.dart';
+import 'brains/questionBrain.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
