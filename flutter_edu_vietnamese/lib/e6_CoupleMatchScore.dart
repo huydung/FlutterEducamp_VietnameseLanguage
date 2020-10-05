@@ -3,8 +3,8 @@
 //https://www.vietnamparadisetravel.com/blog/vietnamese-zodiac-animals-and-astrology
 
 import 'package:Vietnamese_and_Flutter_Educamp/consts.dart';
-
 import 'package:flutter/material.dart';
+
 import 'components/BirthYearSelectionWidget.dart';
 
 class E6_CoupleMatch extends StatefulWidget {
@@ -21,8 +21,6 @@ class E6_CoupleMatchState extends State<E6_CoupleMatch> {
     super.initState();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,17 +29,24 @@ class E6_CoupleMatchState extends State<E6_CoupleMatch> {
       ),
       body: Center(
           child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          SizedBox(
+            height: kStandardMargin * 2,
+          ),
           Expanded(
             //first card
             flex: 1,
             child: BirthYearSelectionWidget(),
           ),
-          Expanded(
-            child: Container(),
+          SizedBox(
+            height: kStandardMargin,
           ),
           Expanded(
-            child: Container(),
+            child: BirthYearSelectionWidget(),
+          ),
+          SizedBox(
+            height: kStandardMargin * 2,
           ),
         ],
       )),

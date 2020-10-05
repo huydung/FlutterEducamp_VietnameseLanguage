@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:Vietnamese_and_Flutter_Educamp/brains/astrologyBrain.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -5,32 +8,35 @@ import '../consts.dart';
 
 class BirthYearSelectionWidget extends StatefulWidget {
   @override
-  _BirthYearSelectionWidgetState createState() => _BirthYearSelectionWidgetState();
+  _BirthYearSelectionWidgetState createState() =>
+      _BirthYearSelectionWidgetState();
 }
 
 class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
-  double _birthYear = DateTime.now().year.toDouble() - 18;
+  double _birthYear =
+      DateTime.now().year.toDouble() - 45 + (Random().nextInt(30));
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: kHDIBGColor,
-      elevation: kSmallMargin,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(kStandardMargin),
+    return Container(
+      padding: EdgeInsets.all(kSmallMargin),
+      margin: EdgeInsets.all(kSmallMargin),
+      decoration: BoxDecoration(
+        color: kHDIBGColor,
+        borderRadius: BorderRadius.circular(kSmallMargin),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
         children: [
           Expanded(
             flex: 2,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -71,7 +77,12 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
                       Text(
                         '${_birthYear.round()}',
                         style: TextStyle(fontSize: kKeyPointFontSize),
-                      )
+                      ),
+                      Text(
+                        AstrologyBrain.getInstance()
+                            .getYearName(_birthYear.round()),
+                        style: TextStyle(fontSize: kSubtitleFontSize),
+                      ),
                     ],
                   ),
                 ),
@@ -83,18 +94,17 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(kSmallMargin),
                           color: Colors.white60,
-                          boxShadow: [BoxShadow(
-                            color: Colors.white30,
-                            //blurRadius: kSmallMargin * 0.3,
-                            //offset: Offset.fromDirection(225, 5),
-                            // spreadRadius: kSmallMargin * 0.5,
-
-                          )]
-                      ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.white30,
+                              //blurRadius: kSmallMargin * 0.3,
+                              //offset: Offset.fromDirection(225, 5),
+                              // spreadRadius: kSmallMargin * 0.5,
+                            )
+                          ]),
                       child: Image(
-                        image: AssetImage('assets/zodiacs/cat'
-                            '.png'),
-
+                        image: AssetImage(AstrologyBrain.getInstance()
+                            .getAssetImagePath(_birthYear.round())),
                       ),
                     ),
                   ),
@@ -109,13 +119,14 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
               children: [
                 SliderTheme(
                   data: SliderTheme.of(context).copyWith(
+                    //trackShape: CustomTrackShape(),
                     activeTrackColor: Colors.blueGrey[300],
                     inactiveTrackColor: Colors.blueGrey[300],
                     thumbColor: kHDIPrimaryColor,
-                    valueIndicatorColor: Colors.blueGrey[300],
-                    valueIndicatorTextStyle: TextStyle(
-                      color: Colors.grey[900],
-                    ),
+                    // valueIndicatorColor: Colors.blueGrey[300],
+                    // valueIndicatorTextStyle: TextStyle(
+                    //   color: Colors.grey[900],
+                    // ),
                     thumbShape: RoundSliderThumbShape(
                       enabledThumbRadius: 15.0,
                       elevation: 5,
@@ -124,11 +135,11 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
                     //showValueIndicator: ShowValueIndicator.always,
                   ),
                   child: Slider(
-                    min: DateTime.now().year.toDouble() - 90,
-                    max: DateTime.now().year.toDouble() - 13,
+                    min: DateTime.now().year.toDouble() - 100,
+                    max: DateTime.now().year.toDouble(),
                     value: _birthYear,
                     label: '${_birthYear.round()}',
-                    divisions: (90 - 13),
+                    divisions: 100,
                     onChanged: (value) {
                       setState(() {
                         _birthYear = value;
@@ -152,5 +163,23 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
         ],
       ),
     );
+  }
+}
+
+class CustomTrackShape extends RoundedRectSliderTrackShape {
+  Rect getPreferredRect({
+    @required RenderBox parentBox,
+    Offset offset = Offset.zero,
+    @required SliderThemeData sliderTheme,
+    bool isEnabled = false,
+    bool isDiscrete = false,
+  }) {
+    final double trackHeight = sliderTheme.trackHeight;
+    final double trackLeft = offset.dx;
+    final double trackTop =
+        offset.dy + (parentBox.size.height - trackHeight) / 2;
+    final double trackWidth = parentBox.size.width;
+    return Rect.fromLTWH(
+        trackLeft + 15, trackTop, trackWidth - 30, trackHeight);
   }
 }
