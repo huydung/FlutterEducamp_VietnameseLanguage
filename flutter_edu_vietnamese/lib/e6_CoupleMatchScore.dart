@@ -32,21 +32,43 @@ class E6_CoupleMatchState extends State<E6_CoupleMatch> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(
-            height: kStandardMargin * 2,
+            height: kSmallMargin,
           ),
           Expanded(
             //first card
-            flex: 1,
-            child: BirthYearSelectionWidget(),
+            flex: 3,
+            child: BirthYearSelectionWidget(
+              gender: Gender.MALE,
+            ),
+          ),
+          SizedBox(
+            height: kSmallMargin,
+          ),
+          Expanded(
+            flex: 3,
+            child: BirthYearSelectionWidget(
+              gender: Gender.FEMALE,
+            ),
           ),
           SizedBox(
             height: kStandardMargin,
           ),
           Expanded(
-            child: BirthYearSelectionWidget(),
-          ),
-          SizedBox(
-            height: kStandardMargin * 2,
+            flex: 1,
+            child: GestureDetector(
+              onTap: () {},
+              child: Container(
+                alignment: Alignment.center,
+                child: Center(
+                  child: Text(
+                    'CALCULATE',
+                    style: TextStyle(fontSize: kKeyPointFontSize * 0.7),
+                  ),
+                ),
+                padding: EdgeInsets.only(bottom: kStandardMargin),
+                color: kHDIPrimaryColor,
+              ),
+            ),
           ),
         ],
       )),

@@ -8,6 +8,8 @@ const double kDetailFontSize = 16;
 const double kKeyPointFontSize = 60;
 const double kSubtitleFontSize = 20;
 
+enum Gender { MALE, FEMALE }
+
 class kRoutes {
   static const String HOME = '/';
   static const String E1_IMAGE = '/e1';

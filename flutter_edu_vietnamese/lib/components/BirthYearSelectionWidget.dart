@@ -5,8 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../consts.dart';
+import 'RoundedIconButton.dart';
 
 class BirthYearSelectionWidget extends StatefulWidget {
+  Gender gender;
+
+  BirthYearSelectionWidget({@required this.gender});
+
   @override
   _BirthYearSelectionWidgetState createState() =>
       _BirthYearSelectionWidgetState();
@@ -26,12 +31,11 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
         borderRadius: BorderRadius.circular(kSmallMargin),
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.max,
         children: [
           Expanded(
             flex: 2,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
                   child: Column(
@@ -44,15 +48,16 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
                           SizedBox(
                             width: kStandardMargin * 2.5,
                             height: kStandardMargin * 2.5,
-                            child: RawMaterialButton(
-                              onPressed: () {},
-                              elevation: 1.0,
-                              fillColor: Colors.blueGrey[800],
-                              child: FaIcon(
-                                FontAwesomeIcons.venus,
-                                size: kStandardMargin * 1.5,
-                              ),
-                              shape: CircleBorder(),
+                            child: RoundedIconButton(
+                              onPressed: () {
+                                setState(
+                                  () {
+                                    widget.gender = Gender.FEMALE;
+                                  },
+                                );
+                              },
+                              icon: FontAwesomeIcons.venus,
+                              selected: widget.gender == Gender.FEMALE,
                             ),
                           ),
                           SizedBox(
@@ -61,51 +66,59 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
                           SizedBox(
                             width: kStandardMargin * 2.5,
                             height: kStandardMargin * 2.5,
-                            child: RawMaterialButton(
-                              onPressed: () {},
-                              elevation: 1.0,
-                              fillColor: Colors.blueGrey[800],
-                              child: FaIcon(
-                                FontAwesomeIcons.mars,
-                                size: kStandardMargin * 1.5,
-                              ),
-                              shape: CircleBorder(),
+                            child: RoundedIconButton(
+                              onPressed: () {
+                                setState(
+                                  () {
+                                    widget.gender = Gender.MALE;
+                                  },
+                                );
+                              },
+                              icon: FontAwesomeIcons.mars,
+                              selected: widget.gender == Gender.MALE,
                             ),
                           ),
                         ],
                       ),
                       Text(
                         '${_birthYear.round()}',
-                        style: TextStyle(fontSize: kKeyPointFontSize),
+                        style: TextStyle(
+                            fontSize: kKeyPointFontSize,
+                            color: Colors.white,
+                            shadows: [
+                              Shadow(
+                                offset: Offset(2.0, 2.0),
+                                blurRadius: 3.0,
+                                color: kHDIPrimaryColor,
+                              )
+                            ]),
                       ),
                       Text(
-                        AstrologyBrain.getInstance()
-                            .getYearName(_birthYear.round()),
-                        style: TextStyle(fontSize: kSubtitleFontSize),
+                        Astrology.getInstance().getYearDescription(
+                            _birthYear.round(), widget.gender),
+                        style: TextStyle(fontSize: kDetailFontSize),
                       ),
                     ],
                   ),
                 ),
                 Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(
+                  child: Container(
+                    margin: const EdgeInsets.fromLTRB(
                         0, kStandardMargin, kSmallMargin, 0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(kSmallMargin),
-                          color: Colors.white60,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.white30,
-                              //blurRadius: kSmallMargin * 0.3,
-                              //offset: Offset.fromDirection(225, 5),
-                              // spreadRadius: kSmallMargin * 0.5,
-                            )
-                          ]),
-                      child: Image(
-                        image: AssetImage(AstrologyBrain.getInstance()
-                            .getAssetImagePath(_birthYear.round())),
-                      ),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(kSmallMargin),
+                        color: Colors.white60,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.white30,
+                            //blurRadius: kSmallMargin * 0.3,
+                            //offset: Offset.fromDirection(225, 5),
+                            // spreadRadius: kSmallMargin * 0.5,
+                          )
+                        ]),
+                    child: Image(
+                      image: AssetImage(Astrology.getInstance()
+                          .getAssetImagePath(_birthYear.round())),
                     ),
                   ),
                 ),
@@ -113,7 +126,6 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
             ),
           ),
           Expanded(
-            flex: 1,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -151,7 +163,7 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: kStandardMargin, vertical: 0),
                   child: Text(
-                    'Select year of birth (lunar year)',
+                    '^ Select year of birth (lunar year)',
                     style: TextStyle(color: Colors.blueGrey[300]),
                     textAlign: TextAlign.left,
                   ),
