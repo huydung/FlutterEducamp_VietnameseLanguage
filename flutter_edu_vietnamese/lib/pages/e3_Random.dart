@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import 'consts.dart';
+import '../consts.dart';
 
 //https://www.itourvn.com/blog/the-meanings-behind-vietnamese-banknotes
 

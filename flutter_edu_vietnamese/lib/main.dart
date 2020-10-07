@@ -1,14 +1,12 @@
-import 'package:Vietnamese_and_Flutter_Educamp/E3_Random.dart';
-import 'package:Vietnamese_and_Flutter_Educamp/e5_Quizz.dart';
-import 'package:Vietnamese_and_Flutter_Educamp/e6_CoupleMatchScore.dart';
 import 'package:flutter/material.dart';
 
 import 'consts.dart';
-import 'e1_Image.dart';
-import 'e2_Card.dart';
-import 'e4_Audio.dart';
-import 'e5_Quizz.dart';
-import 'e6_CoupleMatchScore.dart';
+import 'pages/e1_Image.dart';
+import 'pages/e2_Card.dart';
+import 'pages/e3_Random.dart';
+import 'pages/e4_Audio.dart';
+import 'pages/e5_Quizz.dart';
+import 'pages/e6_CoupleMatchScore.dart';
 
 //https://exchangeratesapi.io/
 
@@ -22,6 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Learn Flutter & explore the Vietnamese language.',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         //primarySwatch: kHDIPrimaryColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,

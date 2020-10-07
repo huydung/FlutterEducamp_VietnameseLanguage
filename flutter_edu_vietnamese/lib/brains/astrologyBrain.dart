@@ -14,26 +14,31 @@ class Astrology {
 
   Astrology._();
 
-  static Astrology getInstance() {
+  static Astrology get instance  {
     _instance = _instance ?? Astrology._();
     return _instance;
   }
 
+  Zodiac getYearZodiac(int year){
+    return _zodiacs[(year - RAT_YEAR) % 12];
+  }
+  Can getYearCan(int year){
+    return _cans[year % 10];
+  }
+
   String getYearName(int year) {
-    return _cans[year % 10].name +
-        ' ' +
-        _zodiacs[(year - RAT_YEAR) % 12].name; // + ' - ' + yearZodiac.title;
+    return getYearCan(year).name + ' ' + getYearZodiac(year).name;
   }
 
   String getYearDescription(int year, Gender gender) {
-    return getYearName(year) + ', Cung ' + getCungMenh(year, gender);
+    return getYearName(year) + ', Cung ' + getCungMenh(year, gender).name;
   }
 
   String getAssetImagePath(int year) {
     return _zodiacs[(year - RAT_YEAR) % 12].assetIcon;
   }
 
-  String getCungMenh(int year, Gender gender) {
+  CungMenh getCungMenh(int year, Gender gender) {
     //https://tuvingaynay.com/bang-tra-cung-menh-vo-chong-de-xem-co-hop-tuoi-nhau-hay-khong.html
     //Tinh tong cac chu so trong nam
     int numSum = 0;
@@ -47,12 +52,35 @@ class Astrology {
     if (gender == Gender.MALE) {
       // print('Year $year, numsum = $numSum, gender ${gender.toString()}, cung: '
       //     '${_maleCungMenh[numSum % 9].name}');
-      return _maleCungMenh[numSum % 9].name;
+      return _maleCungMenh[numSum % 9];
     } else {
       // print('Year $year, numsum = $numSum, gender ${gender.toString()}, cung: '
       //     '${_femaleCungMenh[numSum % 9].name}');
-      return _femaleCungMenh[numSum % 9].name;
+      return _femaleCungMenh[numSum % 9];
     }
+  }
+
+  AstrologyResult getZodiacResult(int year1, int year2, ){
+    Zodiac zodiac1 = getYearZodiac(year1);
+    Zodiac zodiac2 = getYearZodiac(year2);
+    int score = zodiac1.getCompatibilityScore(getYearZodiac(year2));
+    String result = score > 0 ? 'Hợp' : ( score < -1 ? 'Khắc' : ( score < 0 ? 'Xung' : 'Bình thường' ) );
+    return AstrologyResult(
+      score, 'Can Chi: $result', 'Tuổi ${zodiac1.name} và Tuổi ${zodiac2.name}'
+    );
+  }
+
+  AstrologyResult getCungMenhResult(int year1, Gender gender1, int year2, Gender gender2){
+    //https://phongthuyso.vn/chong-mau-thin-vo-canh-ngo-co-hop-nhau-khong.html
+    CungMenh cm1 = getCungMenh(year1, gender1);
+    CungMenh cm2 = getCungMenh(year2, gender2);
+
+    String cungMenhName = _cungMenh[cm1.index][cm2.index];
+    int score = _cungMenhScores[cungMenhName];
+    String result = score > 0 ? 'Cát' : 'Hung';
+    return AstrologyResult(
+        score, 'Cung Mệnh: $result', 'Cung ${cm1.name} và Cung ${cm2.name} thành $cungMenhName'
+    );
   }
 
   static final Zodiac rat = Zodiac(0, 'Tí', 'rat.png', 'The Smart',
@@ -264,7 +292,7 @@ class Zodiac {
 
   String get name => _name;
 
-  String get assetIcon => _assetFolder + '/' + _assetIcon;
+  String get assetIcon => _assetFolder + _assetIcon;
 
   String get description => _description;
 
@@ -278,11 +306,11 @@ class Zodiac {
       case 3:
         return -1;
       case 4:
-        return 2;
+        return 1;
       case 6:
         return -2;
       case 8:
-        return 2;
+        return 1;
       case 9:
         return -1;
       default:
@@ -298,7 +326,6 @@ class Can {
   Can(this._index, this._name);
 
   String get name => _name;
-
   int get index => _index;
 }
 
@@ -309,6 +336,18 @@ class CungMenh {
   CungMenh(this._index, this._name);
 
   String get name => _name;
-
   int get index => _index;
 }
+
+class AstrologyResult {
+  int _score;
+  String _detail;
+  String _title;
+
+  AstrologyResult(this._score, this._title, this._detail);
+
+  String get detail => _detail;
+  int get score => _score;
+  String get title => _title;
+}
+
