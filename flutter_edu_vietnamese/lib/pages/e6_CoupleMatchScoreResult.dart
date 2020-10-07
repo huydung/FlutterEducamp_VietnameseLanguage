@@ -38,7 +38,7 @@ class E6_CoupleMatchResult extends StatelessWidget {
     if( zodiacScore + cungmenhScore > 0 ){
       overallResult = 'Congratulations, the stars are shining brightly for you two, be happy!';
     } else if( zodiacScore + cungmenhScore == 0 ){
-      overallResult = 'Congratulations, there\'s nothing bad standing between you two, be happy!';
+      overallResult = 'Congratulations, all signs included there is nothing terrible stopping your love, be happy!';
     } else {
       overallResult = 'The astrology said you two are not meant for each other. \nBut who cares? Be happy!';
     }

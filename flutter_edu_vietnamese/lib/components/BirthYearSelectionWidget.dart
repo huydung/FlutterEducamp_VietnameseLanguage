@@ -21,6 +21,17 @@ class BirthYearSelectionWidget extends StatefulWidget {
 
 class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
   BirthYearInfo birthInfoWidget;
+  ScrollController _scrollController;
+
+  @override
+  void initState() {
+    _scrollController = ScrollController();
+    _scrollController.addListener(() {
+      print(_scrollController.offset);
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     birthInfoWidget = BirthYearInfo(
@@ -28,7 +39,7 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
       gender: widget.gender,
       alignment: CrossAxisAlignment.center,
       enableButtons: true,
-      onGenderSelected: (){
+      onGenderSelected: () {
         widget.gender = birthInfoWidget.gender;
       },
     );
@@ -40,7 +51,6 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
         borderRadius: BorderRadius.circular(kSmallMargin),
       ),
       child: Column(
-
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -61,11 +71,11 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
                         boxShadow: [
                           BoxShadow(
                             color: Colors.white30,
-                            )
+                          )
                         ]),
                     child: Image(
-                      image: AssetImage(Astrology.instance.getAssetImagePath(
-                          widget.birthYear.round())),
+                      image: AssetImage(Astrology.instance
+                          .getAssetImagePath(widget.birthYear.round())),
                     ),
                   ),
                 ),
@@ -78,14 +88,32 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
             margin: EdgeInsets.fromLTRB(0, kSmallMargin, 0, 0),
             child: Stack(
               children: [
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
+                NotificationListener <ScrollNotification>(
 
-                  child: CustomPaint(
-                    size: Size((2040 - 1940 + 1) * kTickerStep, 60),
-                    //child: Text('Select Lunar Birth Year'),
-                    painter: LongNumericDialPainter(minValue: 1940, maxValue: 2040, majorStep: 10, minorStep: 1),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    controller: _scrollController,
+                    child: CustomPaint(
+                      size: Size((2040 - 1940 + 1) * kTickerStep, 60),
+                      //child: Text('Select Lunar Birth Year'),
+                      painter: LongNumericDialPainter(
+                          minValue: 1940,
+                          maxValue: 2040,
+                          majorStep: 10,
+                          minorStep: 1),
+                    ),
                   ),
+                  onNotification: (scrollNoti) {
+                    //print('ScrollNotification detected!');
+                    if( scrollNoti is ScrollUpdateNotification ){
+                      print('Currently at ${scrollNoti.metrics.pixels} in between ${scrollNoti.metrics.minScrollExtent} and ${scrollNoti.metrics.maxScrollExtent}');
+                      int currentValue = 1940 + (scrollNoti.metrics.pixels / kTickerStep).round();
+                      setState(() {
+                        widget.birthYear = currentValue.toDouble();
+                      });
+                    };
+                    return true;
+                  },
                 ),
                 Padding(
                   child: Icon(
@@ -95,11 +123,9 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
                   ),
                   padding: EdgeInsets.only(left: 0),
                 ),
-
               ],
-
-              ),
             ),
+          ),
         ],
       ),
     );
@@ -112,50 +138,61 @@ const double kMinorTickerHeight = 6.0;
 const double kTopMarginDial = 15.0;
 
 class LongNumericDialPainter extends CustomPainter {
-
   final int minValue;
   final int maxValue;
   final int majorStep;
   final int minorStep;
 
-  LongNumericDialPainter({
-      @required this.minValue, @required this.maxValue, @required this.majorStep, @required this.minorStep});
+  LongNumericDialPainter(
+      {@required this.minValue,
+      @required this.maxValue,
+      @required this.majorStep,
+      @required this.minorStep});
 
   @override
   void paint(Canvas canvas, Size size) {
-
     final shapeBounds = Rect.fromLTRB(0, 0, size.width, size.height);
     _drawBackground(canvas, shapeBounds);
     _drawTickers(canvas, shapeBounds);
   }
 
-  void _drawBackground(Canvas canvas, Rect bounds){
-    final paint = Paint()..shader = ui.Gradient.linear(
+  void _drawBackground(Canvas canvas, Rect bounds) {
+    final paint = Paint()
+      ..shader = ui.Gradient.linear(
         bounds.topCenter,
         bounds.bottomCenter,
-        [Color(0xFF222222), Color(0xFF111111), Colors.black, Color(0xFF111111), Color(0xFF222222)],
+        [
+          Color(0xFF222222),
+          Color(0xFF111111),
+          Colors.black,
+          Color(0xFF111111),
+          Color(0xFF222222)
+        ],
         [0.05, 0.3, 0.5, 0.7, 0.95],
-        );
+      );
     canvas.drawRect(bounds, paint);
   }
 
-  void _drawTickers(Canvas canvas, Rect bounds){
+  void _drawTickers(Canvas canvas, Rect bounds) {
     final paintWhite = Paint()..color = Colors.white;
     final paintGrey = Paint()..color = Color(0xFF696969);
 
     //vertical positions for major ticks
-    double topDyMajor = (bounds.height - kMajorTickerHeight)*0.5 + kTopMarginDial;
+    double topDyMajor =
+        (bounds.height - kMajorTickerHeight) * 0.5 + kTopMarginDial;
     double bottomDyMajor = topDyMajor + kMajorTickerHeight + kTopMarginDial;
 
     //vertical positions for minor ticks
-    double topDyMinor = (bounds.height - kMinorTickerHeight)*0.5 + kTopMarginDial;
+    double topDyMinor =
+        (bounds.height - kMinorTickerHeight) * 0.5 + kTopMarginDial;
     double bottomDyMinor = topDyMinor + kMinorTickerHeight + kTopMarginDial;
 
     int numSteps = maxValue - minValue;
     int j = 0;
-    for( int i = 1; i < numSteps +1; i ++ ){
-      if( j % majorStep == 0){
-        canvas.drawLine(Offset(i*kTickerStep, topDyMajor), Offset(i*kTickerStep, bottomDyMajor), paintWhite);
+    for (int i = 1; i < numSteps + 1; i++) {
+      if (j % majorStep == 0) {
+        canvas.drawLine(Offset(i * kTickerStep, topDyMajor),
+            Offset(i * kTickerStep, bottomDyMajor), paintWhite);
         int num = minValue + j;
         int tenLevelNumber = (num / 10).floor() % 10;
 
@@ -170,9 +207,11 @@ class LongNumericDialPainter extends CustomPainter {
           textDirection: TextDirection.ltr,
         );
         textPainter.layout(minWidth: 0);
-        textPainter.paint(canvas, Offset(i*kTickerStep+ 3.0, topDyMajor - 2));
+        textPainter.paint(
+            canvas, Offset(i * kTickerStep + 3.0, topDyMajor - 2));
       } else {
-        canvas.drawLine(Offset(i*kTickerStep, topDyMinor), Offset(i*kTickerStep, bottomDyMinor), paintGrey);
+        canvas.drawLine(Offset(i * kTickerStep, topDyMinor),
+            Offset(i * kTickerStep, bottomDyMinor), paintGrey);
       }
       j++;
     }
@@ -180,7 +219,7 @@ class LongNumericDialPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(LongNumericDialPainter oldDelegate) {
-    return (oldDelegate.minValue != minValue || oldDelegate.maxValue != maxValue);
+    return (oldDelegate.minValue != minValue ||
+        oldDelegate.maxValue != maxValue);
   }
-
 }
