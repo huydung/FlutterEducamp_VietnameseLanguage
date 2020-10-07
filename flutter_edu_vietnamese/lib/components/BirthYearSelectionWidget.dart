@@ -1,5 +1,5 @@
-import 'dart:math';
-
+import 'dart:math' as math;
+import 'dart:ui' as ui;
 import 'package:Vietnamese_and_Flutter_Educamp/brains/astrologyBrain.dart';
 import 'package:Vietnamese_and_Flutter_Educamp/components/BirthYearInfo.dart';
 import 'package:flutter/material.dart';
@@ -42,105 +42,145 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
       child: Column(
 
         children: [
-          Expanded(
-            flex: 2,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: birthInfoWidget,
-                ),
-                Expanded(
-                  child: AspectRatio(
-                    aspectRatio: 1.0,
-                    child: Container(
-                      margin: const EdgeInsets.fromLTRB(
-                          0, kStandardMargin, kSmallMargin, 0),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(kSmallMargin),
-                          color: Colors.white60,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.white30,
-                              )
-                          ]),
-                      child: Image(
-                        image: AssetImage(Astrology.instance.getAssetImagePath(
-                            widget.birthYear.round())),
-                      ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Expanded(
+                child: birthInfoWidget,
+              ),
+              Expanded(
+                child: AspectRatio(
+                  aspectRatio: 1.0,
+                  child: Container(
+                    margin: const EdgeInsets.fromLTRB(
+                        0, kSmallMargin, kSmallMargin, 0),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(kSmallMargin),
+                        color: Colors.white60,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.white30,
+                            )
+                        ]),
+                    child: Image(
+                      image: AssetImage(Astrology.instance.getAssetImagePath(
+                          widget.birthYear.round())),
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          Container(
+            width: double.infinity,
+            height: 60,
+            margin: EdgeInsets.fromLTRB(0, kSmallMargin, 0, 0),
+            child: Stack(
               children: [
-                SliderTheme(
-                  data: SliderTheme.of(context).copyWith(
-                    //trackShape: CustomTrackShape(),
-                    activeTrackColor: Colors.blueGrey[300],
-                    inactiveTrackColor: Colors.blueGrey[300],
-                    thumbColor: kHDIPrimaryColor,
-                    // valueIndicatorColor: Colors.blueGrey[300],
-                    // valueIndicatorTextStyle: TextStyle(
-                    //   color: Colors.grey[900],
-                    // ),
-                    thumbShape: RoundSliderThumbShape(
-                      enabledThumbRadius: 15.0,
-                      elevation: 5,
-                    ),
-                    //thumbShape: PaddleSliderValueIndicatorShape(),
-                    //showValueIndicator: ShowValueIndicator.always,
-                  ),
-                  child: Slider(
-                    min: DateTime.now().year.toDouble() - 100,
-                    max: DateTime.now().year.toDouble(),
-                    value: widget.birthYear,
-                    label: '${widget.birthYear.round()}',
-                    divisions: 100,
-                    onChanged: (value) {
-                      setState(() {
-                        widget.birthYear = value;
-                      });
-                    },
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+
+                  child: CustomPaint(
+                    size: Size((2040 - 1940 + 1) * kTickerStep, 60),
+                    //child: Text('Select Lunar Birth Year'),
+                    painter: LongNumericDialPainter(minValue: 1940, maxValue: 2040, majorStep: 10, minorStep: 1),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: kStandardMargin, vertical: 0),
-                  child: Text(
-                    '^ Select year of birth (lunar year)',
-                    style: TextStyle(color: Colors.blueGrey[300]),
-                    textAlign: TextAlign.left,
+                  child: Icon(
+                    Icons.keyboard_arrow_down,
+                    size: kTickerStep * 2,
+                    color: kHDIPrimaryColor,
                   ),
+                  padding: EdgeInsets.only(left: 0),
                 ),
+
               ],
+
+              ),
             ),
-            // ),
-          ),
         ],
       ),
     );
   }
 }
 
-class CustomTrackShape extends RoundedRectSliderTrackShape {
-  Rect getPreferredRect({
-    @required RenderBox parentBox,
-    Offset offset = Offset.zero,
-    @required SliderThemeData sliderTheme,
-    bool isEnabled = false,
-    bool isDiscrete = false,
-  }) {
-    final double trackHeight = sliderTheme.trackHeight;
-    final double trackLeft = offset.dx;
-    final double trackTop =
-        offset.dy + (parentBox.size.height - trackHeight) / 2;
-    final double trackWidth = parentBox.size.width;
-    return Rect.fromLTWH(
-        trackLeft + 15, trackTop, trackWidth - 30, trackHeight);
+const double kTickerStep = 16.0;
+const double kMajorTickerHeight = 40.0;
+const double kMinorTickerHeight = 6.0;
+const double kTopMarginDial = 15.0;
+
+class LongNumericDialPainter extends CustomPainter {
+
+  final int minValue;
+  final int maxValue;
+  final int majorStep;
+  final int minorStep;
+
+  LongNumericDialPainter({
+      @required this.minValue, @required this.maxValue, @required this.majorStep, @required this.minorStep});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+
+    final shapeBounds = Rect.fromLTRB(0, 0, size.width, size.height);
+    _drawBackground(canvas, shapeBounds);
+    _drawTickers(canvas, shapeBounds);
   }
+
+  void _drawBackground(Canvas canvas, Rect bounds){
+    final paint = Paint()..shader = ui.Gradient.linear(
+        bounds.topCenter,
+        bounds.bottomCenter,
+        [Color(0xFF222222), Color(0xFF111111), Colors.black, Color(0xFF111111), Color(0xFF222222)],
+        [0.05, 0.3, 0.5, 0.7, 0.95],
+        );
+    canvas.drawRect(bounds, paint);
+  }
+
+  void _drawTickers(Canvas canvas, Rect bounds){
+    final paintWhite = Paint()..color = Colors.white;
+    final paintGrey = Paint()..color = Color(0xFF696969);
+
+    //vertical positions for major ticks
+    double topDyMajor = (bounds.height - kMajorTickerHeight)*0.5 + kTopMarginDial;
+    double bottomDyMajor = topDyMajor + kMajorTickerHeight + kTopMarginDial;
+
+    //vertical positions for minor ticks
+    double topDyMinor = (bounds.height - kMinorTickerHeight)*0.5 + kTopMarginDial;
+    double bottomDyMinor = topDyMinor + kMinorTickerHeight + kTopMarginDial;
+
+    int numSteps = maxValue - minValue;
+    int j = 0;
+    for( int i = 1; i < numSteps +1; i ++ ){
+      if( j % majorStep == 0){
+        canvas.drawLine(Offset(i*kTickerStep, topDyMajor), Offset(i*kTickerStep, bottomDyMajor), paintWhite);
+        int num = minValue + j;
+        int tenLevelNumber = (num / 10).floor() % 10;
+
+        TextPainter textPainter = TextPainter(
+          text: TextSpan(
+            text: '${tenLevelNumber}x',
+            style: TextStyle(
+              color: Colors.grey,
+              fontSize: 16,
+            ),
+          ),
+          textDirection: TextDirection.ltr,
+        );
+        textPainter.layout(minWidth: 0);
+        textPainter.paint(canvas, Offset(i*kTickerStep+ 3.0, topDyMajor - 2));
+      } else {
+        canvas.drawLine(Offset(i*kTickerStep, topDyMinor), Offset(i*kTickerStep, bottomDyMinor), paintGrey);
+      }
+      j++;
+    }
+  }
+
+  @override
+  bool shouldRepaint(LongNumericDialPainter oldDelegate) {
+    return (oldDelegate.minValue != minValue || oldDelegate.maxValue != maxValue);
+  }
+
 }
