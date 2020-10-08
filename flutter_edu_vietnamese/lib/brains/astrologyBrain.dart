@@ -14,15 +14,16 @@ class Astrology {
 
   Astrology._();
 
-  static Astrology get instance  {
+  static Astrology get instance {
     _instance = _instance ?? Astrology._();
     return _instance;
   }
 
-  Zodiac getYearZodiac(int year){
+  Zodiac getYearZodiac(int year) {
     return _zodiacs[(year - RAT_YEAR) % 12];
   }
-  Can getYearCan(int year){
+
+  Can getYearCan(int year) {
     return _cans[year % 10];
   }
 
@@ -60,17 +61,22 @@ class Astrology {
     }
   }
 
-  AstrologyResult getZodiacResult(int year1, int year2, ){
+  AstrologyResult getZodiacResult(
+    int year1,
+    int year2,
+  ) {
     Zodiac zodiac1 = getYearZodiac(year1);
     Zodiac zodiac2 = getYearZodiac(year2);
     int score = zodiac1.getCompatibilityScore(getYearZodiac(year2));
-    String result = score > 0 ? 'Hợp' : ( score < -1 ? 'Khắc' : ( score < 0 ? 'Xung' : 'Bình thường' ) );
-    return AstrologyResult(
-      score, 'Can Chi: $result', 'Tuổi ${zodiac1.name} và Tuổi ${zodiac2.name}'
-    );
+    String result = score > 0
+        ? 'Hợp'
+        : (score < -1 ? 'Khắc' : (score < 0 ? 'Xung' : 'Bình thường'));
+    return AstrologyResult(score, 'Can Chi: $result',
+        'Tuổi ${zodiac1.name} và Tuổi ${zodiac2.name} => $score điểm');
   }
 
-  AstrologyResult getCungMenhResult(int year1, Gender gender1, int year2, Gender gender2){
+  AstrologyResult getCungMenhResult(
+      int year1, Gender gender1, int year2, Gender gender2) {
     //https://phongthuyso.vn/chong-mau-thin-vo-canh-ngo-co-hop-nhau-khong.html
     CungMenh cm1 = getCungMenh(year1, gender1);
     CungMenh cm2 = getCungMenh(year2, gender2);
@@ -79,8 +85,10 @@ class Astrology {
     int score = _cungMenhScores[cungMenhName];
     String result = score > 0 ? 'Cát' : 'Hung';
     return AstrologyResult(
-        score, 'Cung Mệnh: $result', 'Cung ${cm1.name} và Cung ${cm2.name} thành $cungMenhName'
-    );
+        score,
+        'Cung Mệnh: $result',
+        'Cung ${cm1.name} và Cung ${cm2.name}\n'
+            'thành $cungMenhName  => $score điểm');
   }
 
   static final Zodiac rat = Zodiac(0, 'Tí', 'rat.png', 'The Smart',
@@ -350,4 +358,3 @@ class AstrologyResult {
   int get score => _score;
   String get title => _title;
 }
-
