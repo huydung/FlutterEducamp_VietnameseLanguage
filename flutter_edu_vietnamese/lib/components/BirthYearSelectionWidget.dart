@@ -17,19 +17,8 @@ class BirthYearSelectionWidget extends StatefulWidget {
 }
 
 class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
-  BirthYearInfo birthInfoWidget;
-
   @override
   Widget build(BuildContext context) {
-    birthInfoWidget = BirthYearInfo(
-      birthYear: widget.birthYear.round(),
-      gender: widget.gender,
-      alignment: CrossAxisAlignment.center,
-      enableButtons: true,
-      onGenderSelected: () {
-        widget.gender = birthInfoWidget.gender;
-      },
-    );
     return Container(
       padding: EdgeInsets.all(kSmallMargin),
       margin: EdgeInsets.all(kSmallMargin),
@@ -44,7 +33,15 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Expanded(
-                child: birthInfoWidget,
+                child: BirthYearInfo(
+                  birthYear: widget.birthYear.round(),
+                  gender: widget.gender,
+                  alignment: CrossAxisAlignment.start,
+                  enableButtons: true,
+                  onGenderSelected: (gender) {
+                    widget.gender = gender;
+                  },
+                ),
               ),
               Expanded(
                 child: AspectRatio(
@@ -71,15 +68,10 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
           ),
           ScrollingNumericTicker(
             config: ScrollingTickerConfig(
-                minValue: 1970,
-                maxValue: 2020,
-                numStepsInFullView: 30,
-                pointerColor: Colors.white,
-                pointerPositionIndex: 5,
-                majorStep: 10,
-                minorStep: 1,
-                height: 60,
-                tickerStepWidth: 12.0),
+              minValue: 1920,
+              maxValue: 2020,
+              pointerPositionStart: 6,
+            ),
             selectedValue: widget.birthYear.round(),
             onChanged: (int value) {
               setState(() {

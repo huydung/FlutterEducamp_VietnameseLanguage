@@ -31,16 +31,19 @@ class E6_CoupleMatchResult extends StatelessWidget {
     String overallResult;
 
     if (totalScore > 0) {
-      overallResult = 'Total Score: ${totalScore}.\nCongratulations, the stars '
+      overallResult =
+          'Total Score: ${totalScore}.\n\nCongratulations, the stars '
           'are shining '
           'bright for '
           'you two, be happy!';
     } else if (totalScore == 0) {
       overallResult =
-          'Total Score: ${totalScore}.\nCongratulations, all signs included there is nothing terrible stopping your love, be happy!';
+          'Total Score: ${totalScore}.\n\nAll signs included, nothing '
+          'terrible \nshould happen, be happy!';
     } else {
       overallResult =
-          'Total Score: ${totalScore}.\nThe astrology said you two are not meant for each other. \nBut who cares? Be happy!';
+          'Total Score: ${totalScore}.\n\nThe astrology says you two are NOT\n '
+          'meant for each other. \nBut who cares? Be happy!';
     }
 
     Icon zodiacIcon;

@@ -8,9 +8,9 @@ class ScrollingTickerConfig {
   int minValue;
   int maxValue;
   int numStepsInFullView;
-  int pointerPositionIndex;
-  int majorStep = 10;
-  int minorStep = 1;
+  int pointerPositionStart;
+  int majorStep;
+  int minorStep;
   double tickerStepWidth;
   double height;
   Color pointerColor;
@@ -18,13 +18,13 @@ class ScrollingTickerConfig {
   ScrollingTickerConfig({
     @required this.minValue,
     @required this.maxValue,
-    @required this.numStepsInFullView,
-    @required this.pointerPositionIndex,
-    @required this.majorStep,
-    @required this.minorStep,
-    @required this.tickerStepWidth,
-    @required this.height,
-    @required this.pointerColor,
+    this.numStepsInFullView = 30,
+    this.pointerPositionStart = 5,
+    this.majorStep = 10,
+    this.minorStep = 1,
+    this.tickerStepWidth = 12.0,
+    this.height = 60.0,
+    this.pointerColor = Colors.white,
   });
 }
 
@@ -97,14 +97,18 @@ class _ScrollingNumericTickerState extends State<ScrollingNumericTicker> {
               return true;
             },
           ),
-          Padding(
-            child: Icon(
-              Icons.arrow_downward,
-              size: config.tickerStepWidth * 2,
-              color: config.pointerColor,
+          Positioned(
+            top: -10,
+            child: Padding(
+              child: Icon(
+                Icons.arrow_drop_down,
+                size: config.tickerStepWidth * 4,
+                color: config.pointerColor,
+              ),
+              padding: EdgeInsets.only(
+                  left: (config.pointerPositionStart - 1) *
+                      config.tickerStepWidth),
             ),
-            padding: EdgeInsets.only(
-                left: config.pointerPositionIndex * config.tickerStepWidth),
           ),
         ],
       ),
@@ -163,7 +167,7 @@ class LongNumericDialPainter extends CustomPainter {
         config.maxValue - config.minValue + config.numStepsInFullView;
 
     for (int i = 0; i < numSteps; i++) {
-      int num = config.minValue + i - config.pointerPositionIndex;
+      int num = config.minValue + i - config.pointerPositionStart;
       if (num < config.minValue || num > config.maxValue) {
         continue;
       }

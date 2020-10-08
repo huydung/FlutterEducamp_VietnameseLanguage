@@ -6,21 +6,39 @@ import '../consts.dart';
 import 'RoundedIconButton.dart';
 
 class BirthYearInfo extends StatefulWidget {
-
   int birthYear;
   Gender gender;
   CrossAxisAlignment alignment;
   bool enableButtons;
 
-  final VoidCallback onGenderSelected;
+  final Function(Gender) onGenderSelected;
 
-  BirthYearInfo({@required this.birthYear, @required this.gender, @required this.alignment, @required this.enableButtons, this.onGenderSelected});
+  BirthYearInfo(
+      {@required this.birthYear,
+      @required this.gender,
+      @required this.alignment,
+      @required this.enableButtons,
+      this.onGenderSelected});
 
   @override
   _BirthYearInfoState createState() => _BirthYearInfoState();
 }
 
 class _BirthYearInfoState extends State<BirthYearInfo> {
+  void _selectGender(Gender gender) {
+    if (widget.enableButtons) {
+      setState(
+        () {
+          widget.gender = gender;
+          if (widget.onGenderSelected != null) {
+            widget.onGenderSelected(gender);
+          }
+        },
+      );
+    }
+    ;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,23 +46,18 @@ class _BirthYearInfoState extends State<BirthYearInfo> {
       crossAxisAlignment: widget.alignment,
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: widget.alignment == CrossAxisAlignment.start
+              ? MainAxisAlignment.start
+              : (widget.alignment == CrossAxisAlignment.end
+                  ? MainAxisAlignment.end
+                  : MainAxisAlignment.center),
           children: [
             SizedBox(
               width: kStandardMargin * 2.5,
               height: kStandardMargin * 2.5,
               child: RoundedIconButton(
                 onPressed: () {
-                  if(widget.enableButtons) {
-                    setState(
-                          () {
-                        widget.gender = Gender.FEMALE;
-                        if(widget.onGenderSelected != null){
-                          widget.onGenderSelected();
-                        }
-                      },
-                    );
-                  };
+                  _selectGender(Gender.FEMALE);
                 },
                 icon: FontAwesomeIcons.venus,
                 selected: widget.gender == Gender.FEMALE,
@@ -58,16 +71,7 @@ class _BirthYearInfoState extends State<BirthYearInfo> {
               height: kStandardMargin * 2.5,
               child: RoundedIconButton(
                 onPressed: () {
-                  if(widget.enableButtons) {
-                    setState(
-                          () {
-                        widget.gender = Gender.MALE;
-                        if(widget.onGenderSelected != null){
-                          widget.onGenderSelected();
-                        }
-                      },
-                    );
-                  };
+                  _selectGender(Gender.MALE);
                 },
                 icon: FontAwesomeIcons.mars,
                 selected: widget.gender == Gender.MALE,
@@ -75,10 +79,12 @@ class _BirthYearInfoState extends State<BirthYearInfo> {
             ),
           ],
         ),
-        SizedBox(height: kSmallMargin,),
+        SizedBox(
+          height: kSmallMargin,
+        ),
         Text(
-          Astrology.instance.getYearDescription(
-              widget.birthYear, widget.gender),
+          Astrology.instance
+              .getYearDescription(widget.birthYear, widget.gender),
           style: TextStyle(fontSize: kDetailFontSize),
         ),
         Text(
@@ -94,7 +100,6 @@ class _BirthYearInfoState extends State<BirthYearInfo> {
                 )
               ]),
         ),
-
       ],
     );
   }
