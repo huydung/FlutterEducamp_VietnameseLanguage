@@ -6,7 +6,7 @@ import 'pages/e2_Card.dart';
 import 'pages/e3_Random.dart';
 import 'pages/e4_Audio.dart';
 import 'pages/e5_Quizz.dart';
-import 'pages/e6_CoupleMatch.dart';
+import 'pages/e6_CoupleMatchScore.dart';
 
 //https://exchangeratesapi.io/
 
