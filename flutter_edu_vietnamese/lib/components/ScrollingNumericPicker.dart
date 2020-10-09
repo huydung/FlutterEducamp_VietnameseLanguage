@@ -73,7 +73,7 @@ class _ScrollingNumericTickerState extends State<ScrollingNumericTicker> {
 
     return Container(
       width: config.numStepsInFullView * config.tickerStepWidth,
-      height: 60,
+      height: config.height,
       margin: EdgeInsets.fromLTRB(0, kSmallMargin, 0, 0),
       child: Stack(
         children: [
@@ -98,7 +98,7 @@ class _ScrollingNumericTickerState extends State<ScrollingNumericTicker> {
             },
           ),
           Positioned(
-            top: -10,
+            top: -15,
             child: Padding(
               child: Icon(
                 Icons.arrow_drop_down,

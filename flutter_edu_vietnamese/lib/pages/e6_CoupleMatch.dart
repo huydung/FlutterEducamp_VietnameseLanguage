@@ -43,36 +43,43 @@ class E6_CoupleMatchState extends State<E6_CoupleMatch> {
         title: Text('Couple Matching Score'),
       ),
       body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Expanded(
-              //first card
-              flex: 3,
-              child: p1BirthYearSelectionWidget),
-          Expanded(flex: 3, child: p2BirthYearSelectionWidget),
-          BigButton(
-            text: 'CALCULATE',
-            onTap: () {
-              print(
-                  'p1BirthYearSelectionWidget.gender = ${p1BirthYearSelectionWidget.gender}');
-              print(
-                  'p2BirthYearSelectionWidget.gender = ${p2BirthYearSelectionWidget.gender}');
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => E6_CoupleMatchResult(
-                            p1BirthYear:
-                                p1BirthYearSelectionWidget.birthYear.round(),
-                            p1Gender: p1BirthYearSelectionWidget.gender,
-                            p2BirthYear:
-                                p2BirthYearSelectionWidget.birthYear.round(),
-                            p2Gender: p2BirthYearSelectionWidget.gender,
-                          )));
-            },
-          ),
-        ],
-      )),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Center(
+                child: ListView(
+                  shrinkWrap: true,
+                  children: [
+                    p1BirthYearSelectionWidget,
+                    p2BirthYearSelectionWidget,
+                  ],
+                ),
+              ),
+            ),
+            BigButton(
+              text: 'CALCULATE',
+              onTap: () {
+                print(
+                    'p1BirthYearSelectionWidget.gender = ${p1BirthYearSelectionWidget.gender}');
+                print(
+                    'p2BirthYearSelectionWidget.gender = ${p2BirthYearSelectionWidget.gender}');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => E6_CoupleMatchResult(
+                              p1BirthYear:
+                                  p1BirthYearSelectionWidget.birthYear.round(),
+                              p1Gender: p1BirthYearSelectionWidget.gender,
+                              p2BirthYear:
+                                  p2BirthYearSelectionWidget.birthYear.round(),
+                              p2Gender: p2BirthYearSelectionWidget.gender,
+                            )));
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

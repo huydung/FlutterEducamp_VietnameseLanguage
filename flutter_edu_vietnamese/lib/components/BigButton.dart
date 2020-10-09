@@ -15,9 +15,9 @@ class BigButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         alignment: Alignment.center,
-        height: 75.0,
-        margin: EdgeInsets.fromLTRB(
-            kSmallMargin, kStandardMargin, kSmallMargin, 0),
+        height: 70.0,
+        margin:
+            EdgeInsets.fromLTRB(kSmallMargin, kSmallMargin, kSmallMargin, 0),
         decoration: BoxDecoration(
           color: kHDIPrimaryColor,
           borderRadius: BorderRadius.only(

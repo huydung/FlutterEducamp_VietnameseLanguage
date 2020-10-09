@@ -21,7 +21,7 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(kSmallMargin),
-      margin: EdgeInsets.all(kSmallMargin),
+      margin: EdgeInsets.fromLTRB(kSmallMargin, kSmallMargin, kSmallMargin, 0),
       decoration: BoxDecoration(
         color: kHDIBGColor,
         borderRadius: BorderRadius.circular(kSmallMargin),
@@ -71,6 +71,7 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
               minValue: 1920,
               maxValue: 2020,
               pointerPositionStart: 6,
+              height: 50.0,
             ),
             selectedValue: widget.birthYear.round(),
             onChanged: (int value) {
