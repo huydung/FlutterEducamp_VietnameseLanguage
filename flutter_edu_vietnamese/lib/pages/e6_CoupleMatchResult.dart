@@ -150,9 +150,6 @@ class E6_CoupleMatchResult extends StatelessWidget {
                     Divider(
                       color: Colors.blueGrey[300],
                     ),
-                    SizedBox(
-                      height: kStandardMargin,
-                    ),
                     Center(
                       widthFactor: 0.8,
                       child: Text(

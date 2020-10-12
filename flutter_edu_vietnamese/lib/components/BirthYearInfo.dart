@@ -90,7 +90,7 @@ class _BirthYearInfoState extends State<BirthYearInfo> {
         Text(
           '${widget.birthYear}',
           style: TextStyle(
-              fontSize: kKeyPointFontSize,
+              fontSize: kTitleFontSize,
               color: Colors.white,
               shadows: [
                 Shadow(

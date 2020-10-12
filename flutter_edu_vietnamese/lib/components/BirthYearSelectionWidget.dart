@@ -33,6 +33,7 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Expanded(
+                flex: 4,
                 child: BirthYearInfo(
                   birthYear: widget.birthYear.round(),
                   gender: widget.gender,
@@ -44,6 +45,7 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
                 ),
               ),
               Expanded(
+                flex: 3,
                 child: AspectRatio(
                   aspectRatio: 1.0,
                   child: Container(

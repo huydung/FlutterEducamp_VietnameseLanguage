@@ -82,8 +82,7 @@ class _ScrollingNumericTickerState extends State<ScrollingNumericTicker> {
             onNotification: (scrollNoti) {
               //print('ScrollNotification detected!');
               if (scrollNoti is ScrollUpdateNotification) {
-                print(
-                    'Currently at ${scrollNoti.metrics.pixels} in between ${scrollNoti.metrics.minScrollExtent} and ${scrollNoti.metrics.maxScrollExtent}');
+                // print('Currently at ${scrollNoti.metrics.pixels} in between ${scrollNoti.metrics.minScrollExtent} and ${scrollNoti.metrics.maxScrollExtent}');
                 int currentValue = config.minValue +
                     (scrollNoti.metrics.pixels / config.tickerStepWidth)
                         .round();

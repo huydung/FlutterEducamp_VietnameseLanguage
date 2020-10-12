@@ -6,6 +6,7 @@ const double kStandardMargin = 20.0;
 const double kSmallMargin = 10.0;
 const double kDetailFontSize = 16;
 const double kKeyPointFontSize = 60;
+const double kTitleFontSize = 40;
 const double kSubtitleFontSize = 20;
 
 enum Gender { MALE, FEMALE }

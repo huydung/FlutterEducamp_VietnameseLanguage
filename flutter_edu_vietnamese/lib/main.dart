@@ -1,3 +1,4 @@
+import 'package:Vietnamese_and_Flutter_Educamp/pages/e7_YouTube.dart';
 import 'package:flutter/material.dart';
 
 import 'consts.dart';
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
         kRoutes.E4_SOUNDPAD: (context) => E4_TonalsPage(),
         kRoutes.E5_QUIZ: (context) => E5_QuizPage(),
         kRoutes.E6_COUPLE_MATCH: (context) => E6_CoupleMatch(),
+        kRoutes.E7_API_WORK: (context) => E7_YouTube(),
       },
     );
   }
@@ -100,7 +102,9 @@ class HomePage extends StatelessWidget {
             ),
             HDIButton(
               text: '7. Working with API',
-              onPressed: null,
+              onPressed: () {
+                Navigator.pushNamed(context, kRoutes.E7_API_WORK);
+              },
             ),
             HDIButton(
               text: '8. Data on the Cloud!',
