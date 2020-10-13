@@ -14,12 +14,12 @@ class BankNoteInfo {
   BankNoteInfo({this.assetPath, this.explanation, this.bigName});
 }
 
-class E3_Random extends StatefulWidget {
+class PageRandom extends StatefulWidget {
   @override
-  _E3_RandomPageState createState() => _E3_RandomPageState();
+  PageRandomState createState() => PageRandomState();
 }
 
-class _E3_RandomPageState extends State<E3_Random> {
+class PageRandomState extends State<PageRandom> {
   int index = 0;
   bool _showNote = true;
 

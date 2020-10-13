@@ -1,21 +1,22 @@
 import 'package:Vietnamese_and_Flutter_Educamp/consts.dart';
-import '../brains/questionBrain.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../brains/questionBrain.dart';
 
 // void main() {
 //   runApp(E4_TonalsApp());
 // }
 
-class E5_QuizPage extends StatefulWidget {
-  E5_QuizPage({Key key, this.title}) : super(key: key);
+class PageQuiz extends StatefulWidget {
+  PageQuiz({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
-  _E5_QuizPageState createState() => _E5_QuizPageState();
+  PageQuizState createState() => PageQuizState();
 }
 
-class _E5_QuizPageState extends State<E5_QuizPage> {
+class PageQuizState extends State<PageQuiz> {
   Question _currentQuestion;
   QuestionBank _questionBank;
 
@@ -47,7 +48,7 @@ class _E5_QuizPageState extends State<E5_QuizPage> {
                 child: Text('OK, Quit'),
                 onPressed: () {
                   Navigator.of(context)
-                      .popUntil(ModalRoute.withName(kRoutes.HOME));
+                      .popUntil(ModalRoute.withName(Routes.HOME));
                 },
               ),
               FlatButton(

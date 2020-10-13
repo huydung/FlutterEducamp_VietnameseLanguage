@@ -11,7 +11,7 @@ const double kSubtitleFontSize = 20;
 
 enum Gender { MALE, FEMALE }
 
-class kRoutes {
+class Routes {
   static const String HOME = '/';
   static const String E1_IMAGE = '/e1';
   static const String E2_BIZ_CARD = '/e2';

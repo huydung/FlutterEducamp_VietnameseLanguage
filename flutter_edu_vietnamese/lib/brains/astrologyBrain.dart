@@ -48,7 +48,6 @@ class Astrology {
       numSum = numSum + yearRemain % 10;
       yearRemain = (yearRemain / 10).floor();
     }
-    ;
 
     if (gender == Gender.MALE) {
       // print('Year $year, numsum = $numSum, gender ${gender.toString()}, cung: '
@@ -129,25 +128,26 @@ class Astrology {
   static final Zodiac pig = Zodiac(11, 'Hợi', 'pig.png', 'The Hopeful',
       'Pigs symbolize wealth. People of the pig year are generous and brave. Despite being still quite stubborn and hot-tempered, they are very diligent and willing to listen.');
 
-  static final Can Canh = Can(0, 'Canh');
-  static final Can Tan = Can(1, 'Tân');
-  static final Can Nham = Can(2, 'Nhâm');
-  static final Can Quy = Can(3, 'Quý');
-  static final Can Giap = Can(4, 'Giáp');
-  static final Can At = Can(5, 'Ất');
-  static final Can Binh = Can(6, 'Bính');
-  static final Can Dinh = Can(7, 'Đinh');
-  static final Can Mau = Can(8, 'Mậu');
-  static final Can Ky = Can(9, 'Kỷ');
+  // ignore: non_constant_identifier_names
+  static final Can canh = Can(0, 'Canh');
+  static final Can tan = Can(1, 'Tân');
+  static final Can nham = Can(2, 'Nhâm');
+  static final Can quy = Can(3, 'Quý');
+  static final Can giap = Can(4, 'Giáp');
+  static final Can at = Can(5, 'Ất');
+  static final Can binh = Can(6, 'Bính');
+  static final Can dinh = Can(7, 'Đinh');
+  static final Can mau = Can(8, 'Mậu');
+  static final Can ky = Can(9, 'Kỷ');
 
-  static final CungMenh CungCanf = CungMenh(0, 'Càn');
-  static final CungMenh CungKham = CungMenh(1, 'Khảm');
-  static final CungMenh CungCans = CungMenh(2, 'Cấn');
-  static final CungMenh CungCHan = CungMenh(3, 'Chấn');
-  static final CungMenh CungTon = CungMenh(4, 'Tốn');
-  static final CungMenh CungLy = CungMenh(5, 'Ly');
-  static final CungMenh CungKhon = CungMenh(6, 'Khôn');
-  static final CungMenh CungDoai = CungMenh(7, 'Đoài');
+  static final CungMenh cungCanf = CungMenh(0, 'Càn');
+  static final CungMenh cungKham = CungMenh(1, 'Khảm');
+  static final CungMenh cungCans = CungMenh(2, 'Cấn');
+  static final CungMenh cungChan = CungMenh(3, 'Chấn');
+  static final CungMenh cungTon = CungMenh(4, 'Tốn');
+  static final CungMenh cungLy = CungMenh(5, 'Ly');
+  static final CungMenh cungKhon = CungMenh(6, 'Khôn');
+  static final CungMenh cungDoai = CungMenh(7, 'Đoài');
 
   List<Zodiac> _zodiacs = [
     rat,
@@ -163,31 +163,31 @@ class Astrology {
     dog,
     pig
   ];
-  List<Can> _cans = [Canh, Tan, Nham, Quy, Giap, At, Binh, Dinh, Mau, Ky];
+  List<Can> _cans = [canh, tan, nham, quy, giap, at, binh, dinh, mau, ky];
 
   //Zodiac Flutter Data Preparation https://docs.google.com/spreadsheets/d/1_wmEpbn4XzsAhOT3LrZ-qmVnxU9LkgnPMyRybQ73zFc/edit#gid=0
 
   List<CungMenh> _maleCungMenh = [
-    CungKhon,
-    CungKham,
-    CungLy,
-    CungCans,
-    CungDoai,
-    CungCanf,
-    CungKhon,
-    CungTon,
-    CungCHan
+    cungKhon,
+    cungKham,
+    cungLy,
+    cungCans,
+    cungDoai,
+    cungCanf,
+    cungKhon,
+    cungTon,
+    cungChan
   ];
   List<CungMenh> _femaleCungMenh = [
-    CungTon,
-    CungCans,
-    CungCanf,
-    CungDoai,
-    CungCans,
-    CungLy,
-    CungKham,
-    CungKhon,
-    CungCHan
+    cungTon,
+    cungCans,
+    cungCanf,
+    cungDoai,
+    cungCans,
+    cungLy,
+    cungKham,
+    cungKhon,
+    cungChan
   ];
 
   Map<String, int> _cungMenhScores = {

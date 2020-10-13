@@ -1,16 +1,13 @@
-import 'dart:io';
-
 import 'package:Vietnamese_and_Flutter_Educamp/consts.dart';
 import 'package:Vietnamese_and_Flutter_Educamp/services/YouTubeAPI.dart';
 import 'package:flutter/material.dart';
-import 'package:Vietnamese_and_Flutter_Educamp/consts.dart';
 
-class E7_YouTube extends StatefulWidget {
+class PageYouTube extends StatefulWidget {
   @override
-  _E7_YouTubeState createState() => _E7_YouTubeState();
+  _PageYouTubeState createState() => _PageYouTubeState();
 }
 
-class _E7_YouTubeState extends State<E7_YouTube> {
+class _PageYouTubeState extends State<PageYouTube> {
   List<YouTubeVideo> videos = List();
   bool _loading = true;
 

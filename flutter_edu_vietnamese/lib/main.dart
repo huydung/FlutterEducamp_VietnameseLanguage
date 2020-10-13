@@ -32,16 +32,16 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Fira Sans ExtraCondensed',
       ),
       //home: HomePage(),
-      initialRoute: kRoutes.HOME,
+      initialRoute: Routes.HOME,
       routes: {
-        kRoutes.HOME: (context) => HomePage(),
-        kRoutes.E1_IMAGE: (context) => E1_ImageDisplay(),
-        kRoutes.E2_BIZ_CARD: (context) => E2_Card(),
-        kRoutes.E3_RANDOM_BANK_NOTE: (context) => E3_Random(),
-        kRoutes.E4_SOUNDPAD: (context) => E4_TonalsPage(),
-        kRoutes.E5_QUIZ: (context) => E5_QuizPage(),
-        kRoutes.E6_COUPLE_MATCH: (context) => E6_CoupleMatch(),
-        kRoutes.E7_API_WORK: (context) => E7_YouTube(),
+        Routes.HOME: (context) => HomePage(),
+        Routes.E1_IMAGE: (context) => PageImageDisplay(),
+        Routes.E2_BIZ_CARD: (context) => PageCard(),
+        Routes.E3_RANDOM_BANK_NOTE: (context) => PageRandom(),
+        Routes.E4_SOUNDPAD: (context) => PageTonals(),
+        Routes.E5_QUIZ: (context) => PageQuiz(),
+        Routes.E6_COUPLE_MATCH: (context) => PageCoupleInput(),
+        Routes.E7_API_WORK: (context) => PageYouTube(),
       },
     );
   }
@@ -67,43 +67,43 @@ class HomePage extends StatelessWidget {
             HDIButton(
               text: 'Hello there!',
               onPressed: () {
-                Navigator.pushNamed(context, kRoutes.E1_IMAGE);
+                Navigator.pushNamed(context, Routes.E1_IMAGE);
               },
             ),
             HDIButton(
               text: 'Vietnam Facts',
               onPressed: () {
-                Navigator.pushNamed(context, kRoutes.E2_BIZ_CARD);
+                Navigator.pushNamed(context, Routes.E2_BIZ_CARD);
               },
             ),
             HDIButton(
               text: 'Vietnamese Bank Notes',
               onPressed: () {
-                Navigator.pushNamed(context, kRoutes.E3_RANDOM_BANK_NOTE);
+                Navigator.pushNamed(context, Routes.E3_RANDOM_BANK_NOTE);
               },
             ),
             HDIButton(
               text: '6 tones in Vietnamese',
               onPressed: () {
-                Navigator.pushNamed(context, kRoutes.E4_SOUNDPAD);
+                Navigator.pushNamed(context, Routes.E4_SOUNDPAD);
               },
             ),
             HDIButton(
               text: 'Vietnamese Dishes',
               onPressed: () {
-                Navigator.pushNamed(context, kRoutes.E5_QUIZ);
+                Navigator.pushNamed(context, Routes.E5_QUIZ);
               },
             ),
             HDIButton(
               text: 'Matching Couple?',
               onPressed: () {
-                Navigator.pushNamed(context, kRoutes.E6_COUPLE_MATCH);
+                Navigator.pushNamed(context, Routes.E6_COUPLE_MATCH);
               },
             ),
             HDIButton(
               text: '7. Working with API',
               onPressed: () {
-                Navigator.pushNamed(context, kRoutes.E7_API_WORK);
+                Navigator.pushNamed(context, Routes.E7_API_WORK);
               },
             ),
             HDIButton(
@@ -123,7 +123,7 @@ class HomePage extends StatelessWidget {
 
 class HDIButton extends StatelessWidget {
   final Function onPressed;
-  String text;
+  final String text;
 
   HDIButton({@required this.onPressed, @required this.text});
 

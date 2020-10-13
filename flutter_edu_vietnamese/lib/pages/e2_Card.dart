@@ -1,8 +1,9 @@
-import '../consts.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class E2_Card extends StatelessWidget {
+import '../consts.dart';
+
+class PageCard extends StatelessWidget {
   static const String urlSpokenStat = 'https://www.ethnologue.com/language/vie';
   static const String urlPopularStat =
       'https://www.visualcapitalist.com/100-most-spoken-languages/';

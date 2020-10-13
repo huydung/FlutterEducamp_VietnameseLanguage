@@ -1,22 +1,29 @@
 import 'package:Vietnamese_and_Flutter_Educamp/brains/astrologyBrain.dart';
 import 'package:Vietnamese_and_Flutter_Educamp/components/BirthYearInfo.dart';
 import 'package:Vietnamese_and_Flutter_Educamp/components/ScrollingNumericPicker.dart';
+import 'package:Vietnamese_and_Flutter_Educamp/models/CoupleMatchModel.dart';
 import 'package:flutter/material.dart';
 
 import '../consts.dart';
 
 class BirthYearSelectionWidget extends StatefulWidget {
-  Gender gender;
-  double birthYear;
+  final Person forPerson;
 
-  BirthYearSelectionWidget({@required this.gender, @required this.birthYear});
+  final Function(Person person) updatePersonInfo;
+
+  BirthYearSelectionWidget(
+      {@required this.forPerson, @required this.updatePersonInfo});
 
   @override
   _BirthYearSelectionWidgetState createState() =>
-      _BirthYearSelectionWidgetState();
+      _BirthYearSelectionWidgetState(forPerson);
 }
 
 class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
+  Person _person;
+
+  _BirthYearSelectionWidgetState(this._person);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,12 +42,14 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
               Expanded(
                 flex: 4,
                 child: BirthYearInfo(
-                  birthYear: widget.birthYear.round(),
-                  gender: widget.gender,
+                  initialPerson: _person,
                   alignment: CrossAxisAlignment.start,
-                  enableButtons: true,
+                  buttonsEnabled: true,
                   onGenderSelected: (gender) {
-                    widget.gender = gender;
+                    _person.gender = gender;
+                    if (widget.updatePersonInfo != null) {
+                      widget.updatePersonInfo(_person);
+                    }
                   },
                 ),
               ),
@@ -61,7 +70,7 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
                         ]),
                     child: Image(
                       image: AssetImage(Astrology.instance
-                          .getAssetImagePath(widget.birthYear.round())),
+                          .getAssetImagePath(_person.birthYear)),
                     ),
                   ),
                 ),
@@ -75,10 +84,10 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
               pointerPositionStart: 6,
               height: 50.0,
             ),
-            selectedValue: widget.birthYear.round(),
+            initialValue: _person.birthYear,
             onChanged: (int value) {
               setState(() {
-                widget.birthYear = value.toDouble();
+                _person.birthYear = value;
               });
             },
           )

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 //https://xotours.vn/blog/planning-a-trip-to-vietnam/
 
-class E1_ImageDisplay extends StatelessWidget {
+class PageImageDisplay extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

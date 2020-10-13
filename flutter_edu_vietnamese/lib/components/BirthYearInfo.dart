@@ -1,4 +1,5 @@
 import 'package:Vietnamese_and_Flutter_Educamp/brains/astrologyBrain.dart';
+import 'package:Vietnamese_and_Flutter_Educamp/models/CoupleMatchModel.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -6,37 +7,38 @@ import '../consts.dart';
 import 'RoundedIconButton.dart';
 
 class BirthYearInfo extends StatefulWidget {
-  int birthYear;
-  Gender gender;
-  CrossAxisAlignment alignment;
-  bool enableButtons;
+  final Person initialPerson;
+  final CrossAxisAlignment alignment;
+  final bool buttonsEnabled;
 
   final Function(Gender) onGenderSelected;
 
   BirthYearInfo(
-      {@required this.birthYear,
-      @required this.gender,
+      {@required this.initialPerson,
       @required this.alignment,
-      @required this.enableButtons,
+      @required this.buttonsEnabled,
       this.onGenderSelected});
 
   @override
-  _BirthYearInfoState createState() => _BirthYearInfoState();
+  _BirthYearInfoState createState() => _BirthYearInfoState(initialPerson);
 }
 
 class _BirthYearInfoState extends State<BirthYearInfo> {
+  Person _person;
+
+  _BirthYearInfoState(this._person);
+
   void _selectGender(Gender gender) {
-    if (widget.enableButtons) {
+    if (widget.buttonsEnabled) {
       setState(
         () {
-          widget.gender = gender;
+          _person.gender = gender;
           if (widget.onGenderSelected != null) {
             widget.onGenderSelected(gender);
           }
         },
       );
     }
-    ;
   }
 
   @override
@@ -60,7 +62,7 @@ class _BirthYearInfoState extends State<BirthYearInfo> {
                   _selectGender(Gender.FEMALE);
                 },
                 icon: FontAwesomeIcons.venus,
-                selected: widget.gender == Gender.FEMALE,
+                selected: _person.gender == Gender.FEMALE,
               ),
             ),
             SizedBox(
@@ -74,7 +76,7 @@ class _BirthYearInfoState extends State<BirthYearInfo> {
                   _selectGender(Gender.MALE);
                 },
                 icon: FontAwesomeIcons.mars,
-                selected: widget.gender == Gender.MALE,
+                selected: _person.gender == Gender.MALE,
               ),
             ),
           ],
@@ -84,11 +86,11 @@ class _BirthYearInfoState extends State<BirthYearInfo> {
         ),
         Text(
           Astrology.instance
-              .getYearDescription(widget.birthYear, widget.gender),
+              .getYearDescription(_person.birthYear, _person.gender),
           style: TextStyle(fontSize: kDetailFontSize),
         ),
         Text(
-          '${widget.birthYear}',
+          '${_person.birthYear}',
           style: TextStyle(
               fontSize: kTitleFontSize,
               color: Colors.white,

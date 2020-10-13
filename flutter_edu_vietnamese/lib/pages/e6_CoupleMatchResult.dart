@@ -6,23 +6,21 @@ import 'package:Vietnamese_and_Flutter_Educamp/brains/astrologyBrain.dart';
 import 'package:Vietnamese_and_Flutter_Educamp/components/BigButton.dart';
 import 'package:Vietnamese_and_Flutter_Educamp/components/BirthYearInfo.dart';
 import 'package:Vietnamese_and_Flutter_Educamp/consts.dart';
+import 'package:Vietnamese_and_Flutter_Educamp/models/CoupleMatchModel.dart';
 import 'package:flutter/material.dart';
 
-class E6_CoupleMatchResult extends StatelessWidget {
-  final int p1BirthYear;
-  final int p2BirthYear;
-  final Gender p1Gender;
-  final Gender p2Gender;
+class PageCoupleResult extends StatelessWidget {
+  final Person p1;
+  final Person p2;
 
-  E6_CoupleMatchResult(
-      {this.p1BirthYear, this.p2BirthYear, this.p1Gender, this.p2Gender});
+  PageCoupleResult(this.p1, this.p2);
 
   @override
   Widget build(BuildContext context) {
     AstrologyResult zodiacResult =
-        Astrology.instance.getZodiacResult(p1BirthYear, p2BirthYear);
+        Astrology.instance.getZodiacResult(p1.birthYear, p2.birthYear);
     AstrologyResult cungMenhResult = Astrology.instance
-        .getCungMenhResult(p1BirthYear, p1Gender, p2BirthYear, p2Gender);
+        .getCungMenhResult(p1.birthYear, p1.gender, p2.birthYear, p2.gender);
 
     int zodiacScore = zodiacResult.score;
     int cungmenhScore = cungMenhResult.score;
@@ -31,18 +29,17 @@ class E6_CoupleMatchResult extends StatelessWidget {
     String overallResult;
 
     if (totalScore > 0) {
-      overallResult =
-          'Total Score: ${totalScore}.\n\nCongratulations, the stars '
+      overallResult = 'Total Score: $totalScore.\n\nCongratulations, the stars '
           'are shining '
           'bright for '
           'you two, be happy!';
     } else if (totalScore == 0) {
       overallResult =
-          'Total Score: ${totalScore}.\n\nAll signs included, nothing '
+          'Total Score: $totalScore.\n\nAll signs included, nothing '
           'terrible \nshould happen, be happy!';
     } else {
       overallResult =
-          'Total Score: ${totalScore}.\n\nThe astrology says you two are NOT\n '
+          'Total Score: $totalScore.\n\nThe astrology says you two are NOT\n '
           'meant for each other. \nBut who cares? Be happy!';
     }
 
@@ -69,7 +66,6 @@ class E6_CoupleMatchResult extends StatelessWidget {
         size: iconSize,
       );
     }
-    ;
 
     if (cungmenhScore > 0) {
       cungmenhIcon = Icon(
@@ -84,7 +80,6 @@ class E6_CoupleMatchResult extends StatelessWidget {
         size: iconSize,
       );
     }
-    ;
 
     return Scaffold(
       appBar: AppBar(
@@ -112,16 +107,14 @@ class E6_CoupleMatchResult extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         BirthYearInfo(
-                          birthYear: p1BirthYear,
-                          gender: p1Gender,
+                          initialPerson: p1,
                           alignment: CrossAxisAlignment.start,
-                          enableButtons: false,
+                          buttonsEnabled: false,
                         ),
                         BirthYearInfo(
-                          birthYear: p2BirthYear,
-                          gender: p2Gender,
+                          initialPerson: p2,
                           alignment: CrossAxisAlignment.end,
-                          enableButtons: false,
+                          buttonsEnabled: false,
                         ),
                       ],
                     ),

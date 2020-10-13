@@ -31,25 +31,31 @@ class ScrollingTickerConfig {
 class ScrollingNumericTicker extends StatefulWidget {
   final ScrollingTickerConfig config;
   final Function(int) onChanged;
-  int selectedValue;
+  final int initialValue;
 
   ScrollingNumericTicker(
       {@required this.config,
       @required this.onChanged,
-      @required this.selectedValue});
+      @required this.initialValue});
 
   @override
-  _ScrollingNumericTickerState createState() => _ScrollingNumericTickerState();
+  _ScrollingNumericTickerState createState() =>
+      _ScrollingNumericTickerState(initialValue);
 }
 
 class _ScrollingNumericTickerState extends State<ScrollingNumericTicker> {
   ScrollController _controller;
+  int _selectedValue;
+
+  _ScrollingNumericTickerState(int initialValue) {
+    _selectedValue = initialValue;
+  }
 
   @override
   void initState() {
-    print('initState in scrolling ticker widget');
+    //print('initState in scrolling ticker widget');
     _controller = ScrollController(
-        initialScrollOffset: (widget.selectedValue - widget.config.minValue) *
+        initialScrollOffset: (_selectedValue - widget.config.minValue) *
             widget.config.tickerStepWidth);
     super.initState();
   }
@@ -66,7 +72,6 @@ class _ScrollingNumericTickerState extends State<ScrollingNumericTicker> {
             (config.maxValue - config.minValue + config.numStepsInFullView) *
                 config.tickerStepWidth,
             config.height),
-        //child: Text('Select Lunar Birth Year'),
         painter: LongNumericDialPainter(config),
       ),
     );
@@ -79,14 +84,12 @@ class _ScrollingNumericTickerState extends State<ScrollingNumericTicker> {
         children: [
           NotificationListener<ScrollNotification>(
             child: scrollView,
-            onNotification: (scrollNoti) {
-              //print('ScrollNotification detected!');
+            onNotification: (ScrollNotification scrollNoti) {
               if (scrollNoti is ScrollUpdateNotification) {
-                // print('Currently at ${scrollNoti.metrics.pixels} in between ${scrollNoti.metrics.minScrollExtent} and ${scrollNoti.metrics.maxScrollExtent}');
                 int currentValue = config.minValue +
                     (scrollNoti.metrics.pixels / config.tickerStepWidth)
                         .round();
-                widget.selectedValue = currentValue;
+                _selectedValue = currentValue;
                 setState(() {
                   if (widget.onChanged != null) {
                     widget.onChanged(currentValue);
@@ -180,7 +183,7 @@ class LongNumericDialPainter extends CustomPainter {
         //int lastTwoNum = num % 100;
         TextPainter textPainter = TextPainter(
           text: TextSpan(
-            text: '${num}',
+            text: '$num',
             style: TextStyle(
               color: Colors.grey,
               fontSize: 12,
