@@ -8,20 +8,15 @@ class PageYouTube extends StatefulWidget {
 }
 
 class _PageYouTubeState extends State<PageYouTube> {
-  List<YouTubeVideo> videos = List();
   bool _loading = true;
 
-  void _fetchVideos() async {
-    //sleep(Duration(milliseconds: 3000));
-    videos = await YouTubeAPI.instance.getVideos(YouTubeQuery.TRENDING_VIETNAM);
-    setState(() {
-      _loading = false;
-    });
-  }
+  Future<List<YouTubeVideo>> _fetchVideosFuture;
+  List<YouTubeVideo> _videos;
 
   @override
   void initState() {
-    _fetchVideos();
+    _fetchVideosFuture =
+        YouTubeAPI.instance.getVideos(YouTubeQuery.TRENDING_VIETNAM);
     super.initState();
   }
 
@@ -29,17 +24,43 @@ class _PageYouTubeState extends State<PageYouTube> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('YouTube in Vietnam'),
+        title: Text('YouTube Videos in Vietnam'),
       ),
       body: Center(
-        child: _loading
-            ? CircularProgressIndicator(
+        child: FutureBuilder<List<YouTubeVideo>>(
+          future: _fetchVideosFuture,
+          initialData: [],
+          builder: (BuildContext context,
+              AsyncSnapshot<List<YouTubeVideo>> snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              print(snapshot.hasData);
+              if (snapshot.hasData) {
+                _videos = snapshot.data;
+                return Column(
+                  children: [
+                    Text(
+                      'Finished loading ${_videos.length} videos with the first one being ${_videos[0].title}',
+                      style: TextStyle(fontSize: kSubtitleFontSize),
+                    ),
+                    Image(
+                      image: AssetImage('assets/vietnamflag.png'),
+                    )
+                  ],
+                );
+              } else {
+                return Text(
+                  'Error Loading YouTube Videos: ${snapshot.error}',
+                  style: TextStyle(fontSize: kSubtitleFontSize),
+                );
+              }
+            } else {
+              return CircularProgressIndicator(
                 value: null,
-                backgroundColor: kHDIBGColor,
-                valueColor: AlwaysStoppedAnimation<Color>(kHDIPrimaryColor),
-              )
-            : Text(
-                'Finish fetching the videos! We got ${videos.length} videos!'),
+                valueColor: new AlwaysStoppedAnimation<Color>(kHDIPrimaryColor),
+              );
+            }
+          },
+        ),
       ),
     );
   }

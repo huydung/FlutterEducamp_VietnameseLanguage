@@ -1,6 +1,7 @@
-﻿import 'package:Vietnamese_and_Flutter_Educamp/secret_id.dart';
+﻿import 'dart:convert';
+
+import 'package:Vietnamese_and_Flutter_Educamp/secret_id.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 enum YouTubeQuery { TRENDING_VIETNAM, TRENDING_NEARME, SEARCH }
 
@@ -23,6 +24,20 @@ class YouTubeVideo {
       this.views,
       this.comments,
       this.likes});
+
+  factory YouTubeVideo.fromJSON(Map<String, dynamic> element) {
+    //print('${element['id']} : ${element['snippet']['title']}');
+    return YouTubeVideo(
+      id: element['id'],
+      imageURL: element['snippet']['thumbnails']['standard']['url'],
+      title: element['snippet']['title'],
+      channel: element['snippet']['channelTitle'],
+      published: DateTime.parse(element['snippet']['publishedAt']),
+      views: int.parse(element['statistics']['viewCount'] ?? '0'),
+      comments: int.parse(element['statistics']['likeCount'] ?? '0'),
+      likes: int.parse(element['statistics']['commentCount'] ?? '0'),
+    );
+  }
 }
 
 class YouTubeAPI {
@@ -33,31 +48,21 @@ class YouTubeAPI {
 
   static YouTubeAPI get instance => _instance = _instance ?? YouTubeAPI._();
 
-  Future<dynamic> getVideos(YouTubeQuery query) async {
+  Future<List<YouTubeVideo>> getVideos(YouTubeQuery query) async {
     String url =
         'https://www.googleapis.com/youtube/v3/videos?part=snippet&part=statistics&chart=mostPopular&regionCode=VN&maxResults=25&key=$kYouTubeApiToken';
     http.Response response = await http.get(url);
-    //print('getVideos: status code ${response.statusCode}');
+
     if (response.statusCode == 200) {
+      //print('getVideos: $url return ${response.body}');
       String data = response.body;
       var jsonData = jsonDecode(data);
       _nextPageToken = jsonData['nextPageToken'];
       List videoItems = List.from(jsonData['items']);
-      print(videoItems);
+      //print(videoItems);
       List<YouTubeVideo> videos = List();
       videoItems.forEach((element) {
-        YouTubeVideo video = YouTubeVideo(
-          id: element['id'],
-          imageURL: element['snippet']['thumbnails']['standard']['url'],
-          title: element['snippet']['title'],
-          channel: element['snippet']['channelTitle'],
-          published: DateTime.parse(element['snippet']['publishedAt']),
-          views: int.parse(element['statistics']['viewCount']),
-          comments: int.parse(element['statistics']['likeCount']),
-          likes: int.parse(element['statistics']['commentCount']),
-        );
-        //print('Video: ${video.title}');
-        videos.add(video);
+        videos.add(YouTubeVideo.fromJSON(element));
       });
 
       return videos;
