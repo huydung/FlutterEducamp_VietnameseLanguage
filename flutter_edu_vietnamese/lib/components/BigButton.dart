@@ -16,13 +16,13 @@ class BigButton extends StatelessWidget {
       child: Container(
         alignment: Alignment.center,
         height: 70.0,
-        margin:
-            EdgeInsets.fromLTRB(kSmallMargin, kSmallMargin, kSmallMargin, 0),
+        margin: EdgeInsets.fromLTRB(
+            kHDISmallMargin, kHDISmallMargin, kHDISmallMargin, 0),
         decoration: BoxDecoration(
           color: kHDIPrimaryColor,
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(kStandardMargin),
-            topRight: Radius.circular(kStandardMargin),
+            topLeft: Radius.circular(kHDIStandardMargin),
+            topRight: Radius.circular(kHDIStandardMargin),
           ),
         ),
         child: Center(
@@ -31,7 +31,7 @@ class BigButton extends StatelessWidget {
             style: TextStyle(fontSize: 24),
           ),
         ),
-        padding: EdgeInsets.only(bottom: kStandardMargin),
+        padding: EdgeInsets.only(bottom: kHDIStandardMargin),
       ),
     );
   }

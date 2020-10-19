@@ -27,11 +27,12 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(kSmallMargin),
-      margin: EdgeInsets.fromLTRB(kSmallMargin, kSmallMargin, kSmallMargin, 0),
+      padding: EdgeInsets.all(kHDISmallMargin),
+      margin: EdgeInsets.fromLTRB(
+          kHDISmallMargin, kHDISmallMargin, kHDISmallMargin, 0),
       decoration: BoxDecoration(
         color: kHDIBGColor,
-        borderRadius: BorderRadius.circular(kSmallMargin),
+        borderRadius: BorderRadius.circular(kHDISmallMargin),
       ),
       child: Column(
         children: [
@@ -59,9 +60,9 @@ class _BirthYearSelectionWidgetState extends State<BirthYearSelectionWidget> {
                   aspectRatio: 1.0,
                   child: Container(
                     margin: const EdgeInsets.fromLTRB(
-                        0, kSmallMargin, kSmallMargin, 0),
+                        0, kHDISmallMargin, kHDISmallMargin, 0),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(kSmallMargin),
+                        borderRadius: BorderRadius.circular(kHDISmallMargin),
                         color: Colors.white60,
                         boxShadow: [
                           BoxShadow(

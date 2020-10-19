@@ -55,8 +55,8 @@ class _BirthYearInfoState extends State<BirthYearInfo> {
                   : MainAxisAlignment.center),
           children: [
             SizedBox(
-              width: kStandardMargin * 2.5,
-              height: kStandardMargin * 2.5,
+              width: kHDIStandardMargin * 2.5,
+              height: kHDIStandardMargin * 2.5,
               child: RoundedIconButton(
                 onPressed: () {
                   _selectGender(Gender.FEMALE);
@@ -66,11 +66,11 @@ class _BirthYearInfoState extends State<BirthYearInfo> {
               ),
             ),
             SizedBox(
-              width: kSmallMargin,
+              width: kHDISmallMargin,
             ),
             SizedBox(
-              width: kStandardMargin * 2.5,
-              height: kStandardMargin * 2.5,
+              width: kHDIStandardMargin * 2.5,
+              height: kHDIStandardMargin * 2.5,
               child: RoundedIconButton(
                 onPressed: () {
                   _selectGender(Gender.MALE);
@@ -82,17 +82,17 @@ class _BirthYearInfoState extends State<BirthYearInfo> {
           ],
         ),
         SizedBox(
-          height: kSmallMargin,
+          height: kHDISmallMargin,
         ),
         Text(
           Astrology.instance
               .getYearDescription(_person.birthYear, _person.gender),
-          style: TextStyle(fontSize: kDetailFontSize),
+          style: TextStyle(fontSize: kHDIDetailFontSize),
         ),
         Text(
           '${_person.birthYear}',
           style: TextStyle(
-              fontSize: kTitleFontSize,
+              fontSize: kHDITitleFontSize,
               color: Colors.white,
               shadows: [
                 Shadow(

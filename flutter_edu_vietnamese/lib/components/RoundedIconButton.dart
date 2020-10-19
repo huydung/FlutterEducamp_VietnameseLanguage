@@ -19,7 +19,7 @@ class RoundedIconButton extends StatelessWidget {
       fillColor: selected ? kHDIPrimaryColor : Colors.blueGrey[800],
       child: FaIcon(
         icon,
-        size: kStandardMargin * 1.5,
+        size: kHDIStandardMargin * 1.5,
       ),
       shape: CircleBorder(),
     );

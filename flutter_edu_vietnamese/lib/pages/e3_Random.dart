@@ -113,11 +113,11 @@ class PageRandomState extends State<PageRandom> {
             Expanded(
               flex: 7,
               child: ListView(
-                padding: EdgeInsets.only(top: kSmallMargin),
+                padding: EdgeInsets.only(top: kHDISmallMargin),
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        vertical: 0, horizontal: kStandardMargin),
+                        vertical: 0, horizontal: kHDIStandardMargin),
                     child: GestureDetector(
                       onTap: () {
                         setState(() {
@@ -138,7 +138,7 @@ class PageRandomState extends State<PageRandom> {
                         Text(
                           bankNotes[index].bigName,
                           style: TextStyle(
-                              fontSize: kKeyPointFontSize,
+                              fontSize: kHDIKeyPointFontSize,
                               fontFamily: 'Fira Sans '
                                   'Extra Condensed'),
                           textAlign: TextAlign.left,
@@ -149,8 +149,8 @@ class PageRandomState extends State<PageRandom> {
                         Text(
                           'nghìn\nđồng',
                           style: TextStyle(
-                              fontSize: kSubtitleFontSize,
-                              color: Colors.grey[400],
+                              fontSize: kHDISubtitleFontSize,
+                              color: kHDISubtleColor,
                               fontFamily: 'Fira Sans '
                                   'Extra Condensed'),
                           textAlign: TextAlign.left,
@@ -159,13 +159,13 @@ class PageRandomState extends State<PageRandom> {
                   Visibility(
                     visible: _showNote,
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(kStandardMargin,
-                          kSmallMargin, kStandardMargin, kSmallMargin),
+                      padding: const EdgeInsets.fromLTRB(kHDIStandardMargin,
+                          kHDISmallMargin, kHDIStandardMargin, kHDISmallMargin),
                       child: Text(
                         bankNotes[index].explanation,
                         style: TextStyle(
-                          fontSize: kDetailFontSize,
-                          color: Colors.grey[600],
+                          fontSize: kHDIDetailFontSize,
+                          color: kHDISubtleColor,
                         ),
                         textAlign: TextAlign.left,
                       ),
@@ -176,9 +176,9 @@ class PageRandomState extends State<PageRandom> {
             ),
             Divider(
               thickness: 0.5,
-              color: Colors.grey[600],
-              indent: kStandardMargin,
-              endIndent: kStandardMargin,
+              color: kHDISubtleColor,
+              indent: kHDIStandardMargin,
+              endIndent: kHDIStandardMargin,
             ),
             Expanded(
               flex: 1,

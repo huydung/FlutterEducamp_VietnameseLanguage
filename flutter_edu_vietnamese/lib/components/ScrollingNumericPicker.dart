@@ -79,7 +79,7 @@ class _ScrollingNumericTickerState extends State<ScrollingNumericTicker> {
     return Container(
       width: config.numStepsInFullView * config.tickerStepWidth,
       height: config.height,
-      margin: EdgeInsets.fromLTRB(0, kSmallMargin, 0, 0),
+      margin: EdgeInsets.fromLTRB(0, kHDISmallMargin, 0, 0),
       child: Stack(
         children: [
           NotificationListener<ScrollNotification>(

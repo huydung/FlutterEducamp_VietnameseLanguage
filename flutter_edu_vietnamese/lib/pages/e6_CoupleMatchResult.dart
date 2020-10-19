@@ -93,11 +93,11 @@ class PageCoupleResult extends StatelessWidget {
             //first card
             flex: 5,
             child: Container(
-                padding: EdgeInsets.all(kSmallMargin),
-                margin: EdgeInsets.all(kSmallMargin),
+                padding: EdgeInsets.all(kHDISmallMargin),
+                margin: EdgeInsets.all(kHDISmallMargin),
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(kSmallMargin),
+                  borderRadius: BorderRadius.circular(kHDISmallMargin),
                   color: kHDIBGColor,
                 ),
                 child: Column(
@@ -149,7 +149,7 @@ class PageCoupleResult extends StatelessWidget {
                         overallResult,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: kSubtitleFontSize,
+                          fontSize: kHDISubtitleFontSize,
                         ),
                       ),
                     )

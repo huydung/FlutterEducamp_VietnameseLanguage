@@ -71,7 +71,7 @@ class Astrology {
         ? 'Hợp'
         : (score < -1 ? 'Khắc' : (score < 0 ? 'Xung' : 'Bình thường'));
     return AstrologyResult(score, 'Can Chi: $result',
-        'Tuổi ${zodiac1.name} và Tuổi ${zodiac2.name} => $score điểm');
+        'Tuổi ${zodiac1.name} và Tuổi ${zodiac2.name}\n => $score điểm');
   }
 
   AstrologyResult getCungMenhResult(

@@ -77,15 +77,31 @@ class PageQuizState extends State<PageQuiz> {
   List<Widget> buildAnswerButtons() {
     List<Widget> buttons = List();
     _currentQuestion.options.forEach((element) {
-      buttons.add(RaisedButton(
-        child: Text(
-          element,
-          style: TextStyle(color: Colors.white),
-        ),
-        color: kHDIBGColor,
-        onPressed: () {
+      buttons.add(GestureDetector(
+        onTap: () {
           _checkAnswerAndProceed(element);
         },
+        child: Container(
+          decoration: BoxDecoration(
+            color: kHDIBGColor,
+            borderRadius: BorderRadius.all(Radius.circular(kHDISmallBorder)),
+          ),
+          margin: EdgeInsets.only(
+            bottom: kHDISmallMargin * 0.5,
+          ),
+          padding: EdgeInsets.symmetric(
+            vertical: kHDISmallMargin,
+            horizontal: 0,
+          ),
+          width: double.infinity,
+          child: Center(
+            child: Text(
+              element,
+              style: TextStyle(color: Colors.white),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
       ));
     });
     return buttons;
@@ -99,11 +115,11 @@ class PageQuizState extends State<PageQuiz> {
         case QuestionFeedback.UNANSWERD:
           icon = Padding(
             padding: const EdgeInsets.only(
-                right: kSmallMargin * 0.5, left: kSmallMargin * 0.5),
+                right: kHDISmallMargin * 0.5, left: kHDISmallMargin * 0.5),
             child: Icon(
               Icons.fiber_manual_record,
-              color: Colors.grey[800],
-              size: kSmallMargin,
+              color: kHDISubtleColor,
+              size: kHDISmallMargin,
             ),
           );
           break;
@@ -111,14 +127,14 @@ class PageQuizState extends State<PageQuiz> {
           icon = Icon(
             Icons.check_circle_outline,
             color: Colors.green,
-            size: kStandardMargin,
+            size: kHDIStandardMargin,
           );
           break;
         case QuestionFeedback.WRONG:
           icon = Icon(
             Icons.remove_circle_outline,
             color: Colors.red,
-            size: kStandardMargin,
+            size: kHDIStandardMargin,
           );
           break;
         default:
@@ -138,7 +154,7 @@ class PageQuizState extends State<PageQuiz> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(
-              vertical: kSmallMargin, horizontal: kStandardMargin),
+              vertical: kHDISmallMargin, horizontal: kHDIStandardMargin),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -151,7 +167,7 @@ class PageQuizState extends State<PageQuiz> {
                 ),
               ),
               Expanded(
-                flex: 8,
+                flex: 5,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -176,15 +192,16 @@ class PageQuizState extends State<PageQuiz> {
                 ),
               ),
               Expanded(
-                  flex: 2,
-                  child: GridView.count(
+                  flex: 4,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: buildAnswerButtons(),
-                    crossAxisCount: 2,
-                    childAspectRatio: 4.0,
-                    shrinkWrap: true,
-                    crossAxisSpacing: kSmallMargin,
-                    mainAxisSpacing: kSmallMargin,
-                    reverse: true,
+                    // crossAxisCount: 2,
+                    // childAspectRatio: 4.0,
+                    // shrinkWrap: true,
+                    // crossAxisSpacing: kHDISmallMargin,
+                    // mainAxisSpacing: kHDISmallMargin,
+                    // reverse: true,
                   )),
             ],
           ),

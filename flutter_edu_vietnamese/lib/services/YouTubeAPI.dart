@@ -15,6 +15,8 @@ class YouTubeVideo {
   int comments;
   int likes;
 
+  String get videoUrl => 'https://www.youtube.com/watch?v=$id';
+
   YouTubeVideo(
       {this.id,
       this.imageURL,
@@ -29,7 +31,7 @@ class YouTubeVideo {
     //print('${element['id']} : ${element['snippet']['title']}');
     return YouTubeVideo(
       id: element['id'],
-      imageURL: element['snippet']['thumbnails']['standard']['url'],
+      imageURL: element['snippet']['thumbnails']['high']['url'],
       title: element['snippet']['title'],
       channel: element['snippet']['channelTitle'],
       published: DateTime.parse(element['snippet']['publishedAt']),
@@ -50,7 +52,7 @@ class YouTubeAPI {
 
   Future<List<YouTubeVideo>> getVideos(YouTubeQuery query) async {
     String url =
-        'https://www.googleapis.com/youtube/v3/videos?part=snippet&part=statistics&chart=mostPopular&regionCode=VN&maxResults=25&key=$kYouTubeApiToken';
+        'https://www.googleapis.com/youtube/v3/videos?part=snippet&part=statistics&chart=mostPopular&regionCode=VN&maxResults=50&key=$kYouTubeApiToken';
     http.Response response = await http.get(url);
 
     if (response.statusCode == 200) {
