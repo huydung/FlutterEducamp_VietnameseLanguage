@@ -8,7 +8,7 @@
 .buildlog/
 .history
 .svn/
-lib/secret_id.dart
+*secret_id*
 
 # IntelliJ related
 *.iml
