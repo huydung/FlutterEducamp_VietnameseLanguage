@@ -23,22 +23,26 @@ class YouTubeVideo {
       this.title,
       this.channel,
       this.published,
-      this.views,
-      this.comments,
-      this.likes});
+      this.views = 0,
+      this.comments = 0,
+      this.likes = 0});
 
   factory YouTubeVideo.fromJSON(Map<String, dynamic> element) {
     //print('${element['id']} : ${element['snippet']['title']}');
-    return YouTubeVideo(
-      id: element['id'],
+    YouTubeVideo video = YouTubeVideo(
+      id: element['id'] is String ? element['id'] : element['id']['videoId'],
       imageURL: element['snippet']['thumbnails']['high']['url'],
       title: element['snippet']['title'],
       channel: element['snippet']['channelTitle'],
       published: DateTime.parse(element['snippet']['publishedAt']),
-      views: int.parse(element['statistics']['viewCount'] ?? '0'),
-      comments: int.parse(element['statistics']['likeCount'] ?? '0'),
-      likes: int.parse(element['statistics']['commentCount'] ?? '0'),
     );
+
+    if (element['statistics'] != null) {
+      video.views = int.parse(element['statistics']['viewCount'] ?? '0');
+      video.likes = int.parse(element['statistics']['likeCount'] ?? '0');
+      video.comments = int.parse(element['statistics']['commentCount'] ?? '0');
+    }
+    return video;
   }
 }
 
@@ -46,20 +50,28 @@ class YouTubeAPI {
   static YouTubeAPI _instance;
   YouTubeAPI._();
 
-  static String _nextPageToken;
-
   static YouTubeAPI get instance => _instance = _instance ?? YouTubeAPI._();
 
-  Future<List<YouTubeVideo>> getVideos(YouTubeQuery query) async {
-    String url =
-        'https://www.googleapis.com/youtube/v3/videos?part=snippet&part=statistics&chart=mostPopular&regionCode=VN&maxResults=50&key=$kYouTubeApiToken';
+  Future<List<YouTubeVideo>> getVideos({query = ''}) async {
+    String url;
+    if (query == '') {
+      url =
+          'https://www.googleapis.com/youtube/v3/videos?part=snippet&part=statistics&chart=mostPopular' +
+              '&regionCode=VN&maxResults=50&key=$kYouTubeApiToken';
+    } else {
+      url =
+          'https://www.googleapis.com/youtube/v3/search?part=snippet&relevanceLanguage=vi-VN&type=video&q=$query' +
+              '&regionCode=VN&maxResults=50&key=$kYouTubeApiToken';
+    }
+    ;
+
+    print(url);
     http.Response response = await http.get(url);
 
     if (response.statusCode == 200) {
       //print('getVideos: $url return ${response.body}');
       String data = response.body;
       var jsonData = jsonDecode(data);
-      _nextPageToken = jsonData['nextPageToken'];
       List videoItems = List.from(jsonData['items']);
       //print(videoItems);
       List<YouTubeVideo> videos = List();

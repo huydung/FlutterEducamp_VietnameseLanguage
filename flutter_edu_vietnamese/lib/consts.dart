@@ -10,8 +10,8 @@ const double kHDIDetailFontSize = 14;
 const double kHDIKeyPointFontSize = 60;
 const double kHDITitleFontSize = 40;
 const double kHDISubtitleFontSize = 20;
-const double kHDIYouTubeWidth = 128;
-const double kHDIYouTubeHeight = 72;
+const double kHDIYouTubeWidth = 160;
+const double kHDIYouTubeHeight = 90;
 const Color kHDISubtleColor = Color(0xFF90A4AE);
 
 enum Gender { MALE, FEMALE }
