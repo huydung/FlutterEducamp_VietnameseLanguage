@@ -25,37 +25,37 @@ class PageRandomState extends State<PageRandom> {
 
   List<BankNoteInfo> bankNotes = [
     BankNoteInfo(
-        assetPath: 'assets/bank-notes-1000.jpg',
+        assetPath: 'assets/ep3_random/bank-notes-1000.jpg',
         bigName: 'MỘT',
         explanation: 'Image of locals using elephants for logging in Tay '
             'Nguyen Province.'),
     BankNoteInfo(
-        assetPath: 'assets/bank-notes-2000.jpg',
+        assetPath: 'assets/ep3_random/bank-notes-2000.jpg',
         bigName: 'HAI',
         explanation: 'Female textile factory workers in  '
             ' the largest textile factory of Indochina'
             ' during the French colonization period at Nam Dinh Province, '
             'Northern Vietnam.'),
     BankNoteInfo(
-        assetPath: 'assets/bank-notes-5000.jpg',
+        assetPath: 'assets/ep3_random/bank-notes-5000.jpg',
         bigName: 'NĂM',
         explanation: 'Image of Tri An Hydroelectric Power Plant which '
             'located in Dong Nai Province Province - A recognition of the '
             'Soviet Union\'s support to build this plant.'),
     BankNoteInfo(
-        assetPath: 'assets/bank-notes-10000.jpg',
+        assetPath: 'assets/ep3_random/bank-notes-10000.jpg',
         bigName: 'MƯỜI',
         explanation: 'Printed on the VND 10,000 banknote is the White Tiger'
             ' Oil Field, which is a major oil field and has been in '
             'operation since 1975.'
             '.'),
     BankNoteInfo(
-        assetPath: 'assets/bank-notes-20000.jpg',
+        assetPath: 'assets/ep3_random/bank-notes-20000.jpg',
         bigName: 'HAI MƯƠI',
         explanation:
             'Commonly known as the Japanese Covered Bridge, this 18th-century landmark can be found in Hoi An, an ancient town in the Central of Vietnam.'),
     BankNoteInfo(
-        assetPath: 'assets/bank-notes-50000.jpg',
+        assetPath: 'assets/ep3_random/bank-notes-50000.jpg',
         bigName: 'NĂM MƯƠI',
         explanation: 'Two historic sites in Hue: '
             'Nghenh Luong Dinh - the resting'
@@ -64,19 +64,19 @@ class PageRandomState extends State<PageRandom> {
             '- in the past - the locals could read announcements from the '
             'government.'),
     BankNoteInfo(
-        assetPath: 'assets/bank-notes-100000.jpg',
+        assetPath: 'assets/ep3_random/bank-notes-100000.jpg',
         bigName: 'MỘT TRĂM',
         explanation: 'Van Mieu - Quoc Tu Giam, or the Temple of Literature,'
             ' is considered as the'
             ' first university of Vietnam. It is one of the iconic sites of'
             ' Hanoi, the capital of Vietnam.'),
     BankNoteInfo(
-        assetPath: 'assets/bank-notes-200000.jpg',
+        assetPath: 'assets/ep3_random/bank-notes-200000.jpg',
         bigName: 'HAI TRĂM',
         explanation:
             'Dinh Huong Island at the UNESCO Heritage site of Halong Bay.'),
     BankNoteInfo(
-        assetPath: 'assets/bank-notes-500000.jpg',
+        assetPath: 'assets/ep3_random/bank-notes-500000.jpg',
         bigName: 'NĂM TRĂM',
         explanation:
             'The highest Vietnamese banknote denomination is the birthplace of Ho Chi Minh, the 5-room house at Lotus Village, Nam Dan District, Nghe An Province.'),

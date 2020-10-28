@@ -33,7 +33,7 @@ class PageCard extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 50,
-              backgroundImage: AssetImage('assets/vietnamflag.png'),
+              backgroundImage: AssetImage('assets/ep2_card/vietnamflag.png'),
             ),
             Text(
               'Vietnamese Language',

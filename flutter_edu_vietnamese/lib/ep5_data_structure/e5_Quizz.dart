@@ -2,7 +2,7 @@ import 'package:Vietnamese_and_Flutter_Educamp/consts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../brains/questionBrain.dart';
+import 'questionBrain.dart';
 
 // void main() {
 //   runApp(E4_TonalsApp());

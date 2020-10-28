@@ -1,8 +1,7 @@
 import 'dart:ui' as ui;
 
+import 'package:Vietnamese_and_Flutter_Educamp/consts.dart';
 import 'package:flutter/material.dart';
-
-import '../consts.dart';
 
 class ScrollingTickerConfig {
   int minValue;

@@ -1,7 +1,6 @@
-﻿import 'package:flutter/material.dart';
+﻿import 'package:Vietnamese_and_Flutter_Educamp/consts.dart';
+import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import '../consts.dart';
 
 class RoundedIconButton extends StatelessWidget {
   final IconData icon;

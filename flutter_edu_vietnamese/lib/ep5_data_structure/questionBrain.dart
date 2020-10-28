@@ -94,52 +94,52 @@ class QuestionBank {
           questionText: 'What is the name of this dish?',
           options: ['Phở Gà', 'Bún Bò'],
           correctOption: 'Phở Gà',
-          assetImagePath: 'quiz_images/pho.jpg'),
+          assetImagePath: 'ep5_data_structure/pho.jpg'),
       Question(
           questionText: 'What is the name of this dish?',
           options: ['Bánh Mỳ', 'Bánh Giò'],
           correctOption: 'Bánh Mỳ',
-          assetImagePath: 'quiz_images/banhmy.jpg'),
+          assetImagePath: 'ep5_data_structure/banhmy.jpg'),
       Question(
           questionText: 'What is the name of this dish?',
           options: ['Nem Rán', 'Gỏi Cuốn'],
           correctOption: 'Gỏi Cuốn',
-          assetImagePath: 'quiz_images/goicuon.jpg'),
+          assetImagePath: 'ep5_data_structure/goicuon.jpg'),
       Question(
           questionText: 'What is the name of this dish?',
           options: ['Cơm Tấm', 'Xôi Chả'],
           correctOption: 'Cơm Tấm',
-          assetImagePath: 'quiz_images/comtam.jpg'),
+          assetImagePath: 'ep5_data_structure/comtam.jpg'),
       Question(
           questionText: 'What is the name of this dish?',
           options: ['Bún Chá', 'Bún Riêu', 'Miến Gà'],
           correctOption: 'Bún Chá',
-          assetImagePath: 'quiz_images/buncha.jpg'),
+          assetImagePath: 'ep5_data_structure/buncha.jpg'),
       Question(
           questionText: 'What is the name of this dish?',
           options: ['Bánh Cuốn', 'Bánh Trắng', 'Gỏi Cuốn'],
           correctOption: 'Bánh Cuốn',
-          assetImagePath: 'quiz_images/banhcuon.jpg'),
+          assetImagePath: 'ep5_data_structure/banhcuon.jpg'),
       Question(
           questionText: 'What is the name of this dish?',
           options: ['Nem Rán', 'Gỏi Cuốn', 'Bánh Gối'],
           correctOption: 'Nem Rán',
-          assetImagePath: 'quiz_images/nemran.jpg'),
+          assetImagePath: 'ep5_data_structure/nemran.jpg'),
       Question(
           questionText: 'What is the name of this dish?',
           options: ['Bún Bò Huế', 'Bún Cá', 'Phở', 'Mì Quảng'],
           correctOption: 'Bún Bò Huế',
-          assetImagePath: 'quiz_images/bunbohue.jpg'),
+          assetImagePath: 'ep5_data_structure/bunbohue.jpg'),
       Question(
           questionText: 'What is the name of this dish?',
           options: ['Mì Quảng', 'Bánh Đa Cá Rô', 'Bún Bò Huế', 'Bún Cá'],
           correctOption: 'Mì Quảng',
-          assetImagePath: 'quiz_images/miquang.jpg'),
+          assetImagePath: 'ep5_data_structure/miquang.jpg'),
       Question(
           questionText: 'What is the name of this dish?',
           options: ['Bánh Xèo', 'Bánh Gối', 'Bánh Mỳ', 'Bánh Giò'],
           correctOption: 'Bánh Xèo',
-          assetImagePath: 'quiz_images/banhxeo.jpg'),
+          assetImagePath: 'ep5_data_structure/banhxeo.jpg'),
     ];
     restart();
     //print('Finish Initiated Questions. First question: ${_questions[0].questionText}');

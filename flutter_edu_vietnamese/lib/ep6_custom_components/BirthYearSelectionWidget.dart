@@ -1,10 +1,10 @@
-import 'package:Vietnamese_and_Flutter_Educamp/brains/astrologyBrain.dart';
-import 'package:Vietnamese_and_Flutter_Educamp/components/BirthYearInfo.dart';
-import 'package:Vietnamese_and_Flutter_Educamp/components/ScrollingNumericPicker.dart';
-import 'package:Vietnamese_and_Flutter_Educamp/models/CoupleMatchModel.dart';
+import 'package:Vietnamese_and_Flutter_Educamp/consts.dart';
 import 'package:flutter/material.dart';
 
-import '../consts.dart';
+import 'BirthYearInfo.dart';
+import 'CoupleMatchModel.dart';
+import 'ScrollingNumericPicker.dart';
+import 'astrologyBrain.dart';
 
 class BirthYearSelectionWidget extends StatefulWidget {
   final Person forPerson;

@@ -1,7 +1,6 @@
+import 'package:Vietnamese_and_Flutter_Educamp/consts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../consts.dart';
 
 class BigButton extends StatelessWidget {
   final Function onTap;

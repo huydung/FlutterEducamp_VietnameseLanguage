@@ -28,9 +28,13 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
-    - assets/audio/
-    - assets/quiz_images/
-    - assets/zodiacs/
+    - assets/ep1_image/
+    - assets/ep2_card/
+    - assets/ep3_random/
+    - assets/ep4_audio/
+    - assets/ep5_data_structure/
+    - assets/ep6_custom_components/
+
   fonts:
     - family: Fira Sans Extra Condensed
       fonts:

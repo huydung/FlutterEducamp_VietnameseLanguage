@@ -1,6 +1,6 @@
 import 'dart:core';
 
-import '../consts.dart';
+import 'package:Vietnamese_and_Flutter_Educamp/consts.dart';
 
 //https://www.vietnamparadisetravel.com/blog/vietnamese-zodiac-animals-and-astrology
 //https://tuvikhoahoc.vn/xem-tuoi-vo-chong/chong-dinh-mao-va-vo-dinh-mao-hop
@@ -286,7 +286,7 @@ class Astrology {
 }
 
 class Zodiac {
-  String _assetFolder = 'assets/zodiacs/';
+  String _assetFolder = 'assets/ep6_custom_components/';
   int _index;
   String _name;
   String _assetIcon;

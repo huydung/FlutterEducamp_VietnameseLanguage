@@ -12,7 +12,7 @@ class PageImageDisplay extends StatelessWidget {
       ),
       body: Center(
         child: Image(
-          image: AssetImage('assets/poster.jpg'),
+          image: AssetImage('assets/ep1_image/poster.jpg'),
           //repeat: ImageRepeat.repeatY,
         ),
       ),

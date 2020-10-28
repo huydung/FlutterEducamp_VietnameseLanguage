@@ -1,6 +1,6 @@
 ﻿import 'dart:math';
 
-import '../consts.dart';
+import 'package:Vietnamese_and_Flutter_Educamp/consts.dart';
 
 //https://www.raywenderlich.com/6373413-state-management-with-provider
 

@@ -86,7 +86,7 @@ class PageTonalState extends State<PageTonals> {
     Colors.deepPurple[700],
   ];
   static AudioPlayer _player = AudioPlayer();
-  static AudioCache _assetsPlayer = AudioCache(prefix: 'assets/audio/');
+  static AudioCache _assetsPlayer = AudioCache(prefix: 'assets/ep4_audio/');
 
   static void _playVowelSound(int index) {
     if (_assetsPlayer != null) {

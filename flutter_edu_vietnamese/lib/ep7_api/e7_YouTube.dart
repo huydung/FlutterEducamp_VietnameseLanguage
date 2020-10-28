@@ -1,7 +1,8 @@
-import 'package:Vietnamese_and_Flutter_Educamp/components/YouTubeVideoRow.dart';
-import 'package:Vietnamese_and_Flutter_Educamp/consts.dart';
-import 'package:Vietnamese_and_Flutter_Educamp/services/YouTubeAPI.dart';
 import 'package:flutter/material.dart';
+
+import '../consts.dart';
+import 'YouTubeAPI.dart';
+import 'YouTubeVideoRow.dart';
 
 class PageYouTube extends StatefulWidget {
   @override

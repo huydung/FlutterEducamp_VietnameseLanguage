@@ -1,10 +1,10 @@
 ﻿//https://liu.com.vn/bai-viet/xem-bang-tra-cung-menh-vo-chong-co-hop-nhau-hay-khong
 
-import 'package:Vietnamese_and_Flutter_Educamp/models/CoupleMatchModel.dart';
 import 'package:flutter/material.dart';
 
-import '../components/BigButton.dart';
-import '../components/BirthYearSelectionWidget.dart';
+import 'BigButton.dart';
+import 'BirthYearSelectionWidget.dart';
+import 'CoupleMatchModel.dart';
 import 'e6_CoupleMatchResult.dart';
 
 class PageCoupleInput extends StatefulWidget {

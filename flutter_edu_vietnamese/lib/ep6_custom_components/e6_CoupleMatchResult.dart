@@ -1,13 +1,14 @@
 ﻿//https://liu.com.vn/bai-viet/xem-bang-tra-cung-menh-vo-chong-co-hop-nhau-hay-khong
 
+import 'package:Vietnamese_and_Flutter_Educamp/consts.dart';
+import 'package:flutter/material.dart';
+
+import 'BigButton.dart';
+import 'BirthYearInfo.dart';
+import 'CoupleMatchModel.dart';
 //https://www.vietnamparadisetravel.com/blog/vietnamese-zodiac-animals-and-astrology
 
-import 'package:Vietnamese_and_Flutter_Educamp/brains/astrologyBrain.dart';
-import 'package:Vietnamese_and_Flutter_Educamp/components/BigButton.dart';
-import 'package:Vietnamese_and_Flutter_Educamp/components/BirthYearInfo.dart';
-import 'package:Vietnamese_and_Flutter_Educamp/consts.dart';
-import 'package:Vietnamese_and_Flutter_Educamp/models/CoupleMatchModel.dart';
-import 'package:flutter/material.dart';
+import 'astrologyBrain.dart';
 
 class PageCoupleResult extends StatelessWidget {
   final Person p1;

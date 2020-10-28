@@ -1,13 +1,13 @@
-import 'package:Vietnamese_and_Flutter_Educamp/pages/e7_YouTube.dart';
 import 'package:flutter/material.dart';
 
 import 'consts.dart';
-import 'pages/e1_Image.dart';
-import 'pages/e2_Card.dart';
-import 'pages/e3_Random.dart';
-import 'pages/e4_Audio.dart';
-import 'pages/e5_Quizz.dart';
-import 'pages/e6_CoupleMatch.dart';
+import 'ep1_image/e1_Image.dart';
+import 'ep2_card/e2_Card.dart';
+import 'ep3_random/e3_Random.dart';
+import 'ep4_audio/e4_Audio.dart';
+import 'ep5_data_structure/e5_Quizz.dart';
+import 'ep6_custom_components//e6_CoupleMatch.dart';
+import 'ep7_api/e7_YouTube.dart';
 
 //https://exchangeratesapi.io/
 
